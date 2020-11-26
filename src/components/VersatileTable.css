@@ -1,0 +1,11 @@
+.vt-header {
+  display: inline-block;
+}
+
+.vt-row {
+  display: block;
+}
+
+.vt-col {
+  display: inline-block;
+}
