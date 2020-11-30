@@ -4,7 +4,7 @@
 
 ##### Version 1 (Release date 30th Dec 2020 - tentative)
 
-- [ ] Ability to provide custom width to the table columns
+- [x] Ability to provide custom width to the table columns
 - [ ] Individual column sorting
 - [ ] Ability to customize Cell, Row and Table, TableHeader etc (Sub Components)
 - [ ] Custom cell design
