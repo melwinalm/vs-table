@@ -37,10 +37,63 @@ const COLUMNS = [
 
 function App() {
   return (
-    <div>
-      <h3>Basic Static Table</h3>
-      <Versatiletable data={DATA} columns={COLUMNS} />
-    </div>
+    <>
+      <div>
+        <h3>Basic Static Table</h3>
+        <Versatiletable
+          data={DATA}
+          columns={[
+            {
+              key: "id",
+              headerTitle: "ID",
+            },
+            {
+              key: "first_name",
+              headerTitle: "First Name",
+              width: "300px",
+            },
+            {
+              key: "last_name",
+              headerTitle: "Last Name",
+              width: "300px",
+            },
+            {
+              key: "gender",
+              headerTitle: "Gender",
+              width: "150px",
+            },
+          ]}
+        />
+      </div>
+      <div>
+        <h3>Static Table with Custom Cell Rendering</h3>
+        <Versatiletable
+          data={DATA}
+          columns={[
+            {
+              key: "id",
+              headerTitle: "ID",
+            },
+            {
+              key: "first_name",
+              headerTitle: "First Name",
+              width: "300px",
+            },
+            {
+              key: "last_name",
+              headerTitle: "Last Name",
+              width: "300px",
+            },
+            {
+              key: "gender",
+              headerTitle: "Gender",
+              width: "150px",
+              cell: (val) => (val == "Male" ? "M" : "F"),
+            },
+          ]}
+        />
+      </div>
+    </>
   );
 }
 
