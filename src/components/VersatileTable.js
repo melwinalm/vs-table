@@ -1,24 +1,44 @@
 import React, { useState, useEffect } from "react";
 import "./VersatileTable.css";
 
+const headerStyles = (styleProp) => {
+  return {
+    width: styleProp.width ? styleProp.width : "200px",
+    ...styleProp.headerStyle
+  }
+}
+
+const rowStyles = (styleProp) => {
+  return {
+    ...styleProp.rowStyle
+  }
+}
+
+const cellStyles = (styleProp) => {
+  return {
+    width: styleProp.width ? styleProp.width : "200px",
+    ...styleProp.cellStyle
+  }
+}
+
 function Versatiletable({ data, columns }) {
   return (
     <div>
       {columns.map((header) => (
         <div
           className="vt-header"
-          style={{ width: header.width ? header.width : "200px" }}
+          style={headerStyles(header)}
         >
           {header.headerTitle}
         </div>
       ))}
 
       {data.map((row) => (
-        <div className="vt-row">
+        <div className="vt-row" style={rowStyles(row)}>
           {columns.map((cell) => (
             <div
               className="vt-col"
-              style={{ width: cell.width ? cell.width : "200px" }}
+              style={cellStyles(cell)}
             >
               {cell.cell ? cell.cell(row[cell.key]) : row[cell.key]}
             </div>
