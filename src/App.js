@@ -46,21 +46,33 @@ function App() {
             {
               key: "id",
               headerTitle: "ID",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
             {
               key: "first_name",
               headerTitle: "First Name",
               width: "300px",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
             {
               key: "last_name",
               headerTitle: "Last Name",
               width: "300px",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
             {
               key: "gender",
               headerTitle: "Gender",
               width: "150px",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
           ]}
         />
@@ -73,21 +85,33 @@ function App() {
             {
               key: "id",
               headerTitle: "ID",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
             {
               key: "first_name",
               headerTitle: "First Name",
               width: "300px",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
             {
               key: "last_name",
               headerTitle: "Last Name",
               width: "300px",
+              headerStyle: {
+                fontWeight: "bold"
+              }
             },
             {
               key: "gender",
               headerTitle: "Gender",
               width: "150px",
+              headerStyle: {
+                fontWeight: "bold"
+              },
               cell: (val) => (val == "Male" ? "M" : "F"),
             },
           ]}
