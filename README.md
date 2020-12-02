@@ -2,6 +2,14 @@
 
 #### Plannned Features
 
+##### Dev Standards
+
+- Every prop name should follow camelCase naming convention
+
+#### Dev Tasks
+
+- Setting up a standard coding and linting configuration for the project
+
 ##### Version 1 (Release date 30th Dec 2020 - tentative)
 
 - [x] Ability to provide custom width to the table columns
