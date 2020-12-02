@@ -29,7 +29,7 @@ function Versatiletable({ data, columns }) {
           className="vt-header"
           style={headerStyles(header)}
         >
-          {header.headerTitle}
+          {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
         </div>
       ))}
 
