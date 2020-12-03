@@ -41,7 +41,11 @@ function App() {
               headerTitle: "First Name",
               width: "300px",
               headerStyle: {
-                fontWeight: "bold"
+                fontWeight: "bold",
+                borderLeft: "1px solid rgba(32, 33, 36, .28)"
+              },
+              columnStyle: {
+                borderLeft: "1px solid rgba(32, 33, 36, .28)"
               }
             },
             {
@@ -49,7 +53,11 @@ function App() {
               headerTitle: "Last Name",
               width: "300px",
               headerStyle: {
-                fontWeight: "bold"
+                fontWeight: "bold",
+                borderLeft: "1px solid rgba(32, 33, 36, .28)"
+              },
+              columnStyle: {
+                borderLeft: "1px solid rgba(32, 33, 36, .28)"
               }
             },
             {
@@ -57,7 +65,11 @@ function App() {
               headerTitle: "Gender",
               width: "150px",
               headerStyle: {
-                fontWeight: "bold"
+                fontWeight: "bold",
+                borderLeft: "1px solid rgba(32, 33, 36, .28)"
+              },
+              columnStyle: {
+                borderLeft: "1px solid rgba(32, 33, 36, .28)"
               }
             },
           ]}
