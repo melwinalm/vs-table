@@ -1,11 +1,37 @@
+.vt-table {
+  width: auto;
+  display: block;
+  white-space: nowrap;
+  overflow-x: auto;
+  border-color: rgba(223, 225, 229, 0);
+  box-shadow: 0 1px 6px rgba(32,33,36,.28);
+  max-width: fit-content;
+}
+
+.vt-table-striped > .vt-row:nth-child(2n) {
+  background-color: rgba(135, 137, 144, 0.278);
+}
+
+.vt-table-hover > .vt-row:hover {
+  background-color: rgba(32,33,36,.28);
+}
+
 .vt-header {
   display: inline-block;
+  padding: 5px;
+  border-bottom: 2px solid rgba(32,33,36,.28);
 }
 
 .vt-row {
   display: block;
+  /* border-bottom: 1px solid rgba(32,33,36,.28); */
 }
+
+/* .vt-row:hover {
+  background-color: rgba(32,33,36,.28);
+} */
 
 .vt-col {
   display: inline-block;
+  padding: 5px;
 }

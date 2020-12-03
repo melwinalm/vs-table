@@ -1,5 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./VersatileTable.css";
+
+const tableStyles = (styleProp) => {
+  if (styleProp) {
+    return {
+      width: styleProp.width ? styleProp.width : "auto",
+      height: styleProp.height ? styleProp.height : "auto",
+      maxWidth: styleProp.maxWidth ? styleProp.maxWidth : "fit-content",
+      ...styleProp
+    }
+  }
+
+  return {};
+}
 
 const headerStyles = (styleProp) => {
   return {
@@ -8,37 +21,40 @@ const headerStyles = (styleProp) => {
   }
 }
 
-const rowStyles = (styleProp) => {
-  return {
-    ...styleProp.rowStyle
-  }
-}
-
-const cellStyles = (styleProp) => {
+const columnStyles = (styleProp) => {
   return {
     width: styleProp.width ? styleProp.width : "200px",
-    ...styleProp.cellStyle
+    ...styleProp.columnStyle
   }
 }
 
-function Versatiletable({ data, columns }) {
+const getClassNames = (classes) => {
+  return `vt-table ${classes}`;
+}
+
+function Versatiletable({ data, columns, style, className }) {
+
   return (
-    <div>
-      {columns.map((header) => (
+    <div className={getClassNames(className)}
+      style={tableStyles(style)}
+    >
+      {columns.map((header, headerIndex) => (
         <div
           className="vt-header"
+          key={`${header.key}-${headerIndex}`}
           style={headerStyles(header)}
         >
           {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
         </div>
       ))}
 
-      {data.map((row) => (
-        <div className="vt-row" style={rowStyles(row)}>
-          {columns.map((cell) => (
+      {data.map((row, rowIndex) => (
+        <div className="vt-row" key={`row-${rowIndex}`}>
+          {columns.map((cell, cellIndex) => (
             <div
               className="vt-col"
-              style={cellStyles(cell)}
+              key={`${cell.key}-${cellIndex}`}
+              style={columnStyles(cell)}
             >
               {cell.cell ? cell.cell(row[cell.key]) : row[cell.key]}
             </div>
