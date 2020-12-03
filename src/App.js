@@ -13,28 +13,6 @@ const DATA = [
   { id: 10, first_name: "Culley", last_name: "Wilsone", gender: "Male" },
 ];
 
-const COLUMNS = [
-  {
-    key: "id",
-    headerTitle: "ID",
-  },
-  {
-    key: "first_name",
-    headerTitle: "First Name",
-    width: "300px",
-  },
-  {
-    key: "last_name",
-    headerTitle: "Last Name",
-    width: "300px",
-  },
-  {
-    key: "gender",
-    headerTitle: "Gender",
-    width: "150px",
-  },
-];
-
 function App() {
   return (
     <>
