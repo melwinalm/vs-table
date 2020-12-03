@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import chevronUpIcon from "../assets/icons/chevron-up.svg";
+import chevronDownIcon from "../assets/icons/chevron-down.svg";
 import "./VersatileTable.css";
 
 const tableStyles = (styleProp) => {
@@ -34,6 +36,9 @@ const getClassNames = (classes) => {
 
 function Versatiletable({ data, columns, style, className, options }) {
 
+  const [sortOrder, setSortOrder] = useState(options && options.defaultSort && options.defaultSort.sortOrder ? options.defaultSort.sortOrder : null);
+  const [sortField, setSortField] = useState(options && options.defaultSort && options.defaultSort.sortField ? options.defaultSort.sortField : null);
+
   const sortFunction = (data, options) => {
 
     if (options && options.defaultSort) {
@@ -42,22 +47,22 @@ function Versatiletable({ data, columns, style, className, options }) {
 
         let sortedData = null;
 
-        if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'asc' && options.defaultSort.sortField) {
-          sortedData = data.sort((a, b) => a[options.defaultSort.sortField] - b[options.defaultSort.sortField]);
+        if (sortOrder && sortOrder.toLowerCase() === 'asc' && sortField) {
+          sortedData = data.sort((a, b) => a[sortField] - b[sortField]);
           return sortedData;
-        } else if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'desc' && options.defaultSort.sortField) {
-          sortedData = data.sort((a, b) => b[options.defaultSort.sortField] - a[options.defaultSort.sortField]);
+        } else if (sortOrder && sortOrder.toLowerCase() === 'desc' && sortField) {
+          sortedData = data.sort((a, b) => b[sortField] - a[sortField]);
           return sortedData;
         }
       } else {
 
         let sortedData = null;
 
-        if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'asc' && options.defaultSort.sortField) {
-          sortedData = data.sort((a, b) => (a[options.defaultSort.sortField] < b[options.defaultSort.sortField] ? -1 : 1));
+        if (sortOrder && sortOrder.toLowerCase() === 'asc' && sortField) {
+          sortedData = data.sort((a, b) => (a[sortField] < b[sortField] ? -1 : 1));
           return sortedData;
-        } else if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'desc' && options.defaultSort.sortField) {
-          sortedData = data.sort((a, b) => (a[options.defaultSort.sortField] > b[options.defaultSort.sortField] ? -1 : 1));
+        } else if (sortOrder && sortOrder.toLowerCase() === 'desc' && sortField) {
+          sortedData = data.sort((a, b) => (a[sortField] > b[sortField] ? -1 : 1));
           return sortedData;
         }
 
@@ -69,7 +74,7 @@ function Versatiletable({ data, columns, style, className, options }) {
   }
 
   let tableData = sortFunction(data, options);
-
+  
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
       <div className="vt-header-row">
@@ -80,6 +85,16 @@ function Versatiletable({ data, columns, style, className, options }) {
             style={headerStyles(header)}
           >
             {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
+            <img 
+              className="sort-up-icon" 
+              src={chevronUpIcon} 
+              alt="chevron-up"
+              style={header.key === sortField && sortOrder === "desc" ? { opacity: 1 } : { opacity: 0.2 }} />
+            <img 
+              className="sort-down-icon" 
+              src={chevronDownIcon} 
+              alt="chevron-down" 
+              style={header.key === sortField && sortOrder === "asc" ? { opacity: 1 } : { opacity: 0.2 }} />
           </div>
         ))}
       </div>
