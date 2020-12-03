@@ -1,5 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./VersatileTable.css";
+
+const tableStyles = (styleProp) => {
+  if (styleProp) {
+    return {
+      width: styleProp.width ? styleProp.width : "auto",
+      height: styleProp.height ? styleProp.height : "auto",
+      maxWidth: styleProp.maxWidth ? styleProp.maxWidth : "fit-content",
+      ...styleProp
+    }
+  }
+
+  return {};
+}
 
 const headerStyles = (styleProp) => {
   return {
@@ -8,37 +21,76 @@ const headerStyles = (styleProp) => {
   }
 }
 
-const rowStyles = (styleProp) => {
-  return {
-    ...styleProp.rowStyle
-  }
-}
-
-const cellStyles = (styleProp) => {
+const columnStyles = (styleProp) => {
   return {
     width: styleProp.width ? styleProp.width : "200px",
-    ...styleProp.cellStyle
+    ...styleProp.columnStyle
   }
 }
 
-function Versatiletable({ data, columns }) {
-  return (
-    <div>
-      {columns.map((header) => (
-        <div
-          className="vt-header"
-          style={headerStyles(header)}
-        >
-          {header.headerTitle}
-        </div>
-      ))}
+const getClassNames = (classes) => {
+  return `vt-table ${classes}`;
+}
 
-      {data.map((row) => (
-        <div className="vt-row" style={rowStyles(row)}>
-          {columns.map((cell) => (
+function Versatiletable({ data, columns, style, className, options }) {
+
+  const sortFunction = (data, options) => {
+
+    if (options && options.defaultSort) {
+
+      if (options.defaultSort.numericSort) {
+
+        let sortedData = null;
+
+        if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'asc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => a[options.defaultSort.sortField] - b[options.defaultSort.sortField]);
+          return sortedData;
+        } else if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'desc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => b[options.defaultSort.sortField] - a[options.defaultSort.sortField]);
+          return sortedData;
+        }
+      } else {
+
+        let sortedData = null;
+
+        if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'asc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => (a[options.defaultSort.sortField] < b[options.defaultSort.sortField] ? -1 : 1));
+          return sortedData;
+        } else if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'desc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => (a[options.defaultSort.sortField] > b[options.defaultSort.sortField] ? -1 : 1));
+          return sortedData;
+        }
+
+      }
+
+    }
+
+    return data;
+  }
+
+  let tableData = sortFunction(data, options);
+
+  return (
+    <div className={getClassNames(className)} style={tableStyles(style)}>
+      <div className="vt-header-row">
+        {columns.map((header, headerIndex) => (
+          <div
+            className="vt-header-col"
+            key={`${header.key}-${headerIndex}`}
+            style={headerStyles(header)}
+          >
+            {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
+          </div>
+        ))}
+      </div>
+
+      {tableData.map((row, rowIndex) => (
+        <div className="vt-body-row" key={`row-${rowIndex}`}>
+          {columns.map((cell, cellIndex) => (
             <div
-              className="vt-col"
-              style={cellStyles(cell)}
+              className="vt-body-col"
+              key={`${cell.key}-${cellIndex}`}
+              style={columnStyles(cell)}
             >
               {cell.cell ? cell.cell(row[cell.key]) : row[cell.key]}
             </div>
