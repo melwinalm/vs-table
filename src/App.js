@@ -43,6 +43,13 @@ function App() {
         <Versatiletable
           className="vt-table-hover"
           data={DATA}
+          options={{
+            defaultSort: {
+              sortField: "id",
+              sortOrder: "asc",
+              numericSort: true
+            }
+          }}
           columns={[
             {
               key: "id",

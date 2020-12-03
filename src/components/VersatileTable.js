@@ -32,27 +32,63 @@ const getClassNames = (classes) => {
   return `vt-table ${classes}`;
 }
 
-function Versatiletable({ data, columns, style, className }) {
+function Versatiletable({ data, columns, style, className, options }) {
+
+  const sortFunction = (data, options) => {
+
+    if (options && options.defaultSort) {
+
+      if (options.defaultSort.numericSort) {
+
+        let sortedData = null;
+
+        if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'asc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => a[options.defaultSort.sortField] - b[options.defaultSort.sortField]);
+          return sortedData;
+        } else if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'desc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => b[options.defaultSort.sortField] - a[options.defaultSort.sortField]);
+          return sortedData;
+        }
+      } else {
+
+        let sortedData = null;
+
+        if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'asc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => (a[options.defaultSort.sortField] < b[options.defaultSort.sortField] ? -1 : 1));
+          return sortedData;
+        } else if (options.defaultSort.sortOrder && options.defaultSort.sortOrder.toLowerCase() === 'desc' && options.defaultSort.sortField) {
+          sortedData = data.sort((a, b) => (a[options.defaultSort.sortField] > b[options.defaultSort.sortField] ? -1 : 1));
+          return sortedData;
+        }
+
+      }
+
+    }
+
+    return data;
+  }
+
+  let tableData = sortFunction(data, options);
 
   return (
-    <div className={getClassNames(className)}
-      style={tableStyles(style)}
-    >
-      {columns.map((header, headerIndex) => (
-        <div
-          className="vt-header"
-          key={`${header.key}-${headerIndex}`}
-          style={headerStyles(header)}
-        >
-          {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
-        </div>
-      ))}
+    <div className={getClassNames(className)} style={tableStyles(style)}>
+      <div className="vt-header-row">
+        {columns.map((header, headerIndex) => (
+          <div
+            className="vt-header-col"
+            key={`${header.key}-${headerIndex}`}
+            style={headerStyles(header)}
+          >
+            {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
+          </div>
+        ))}
+      </div>
 
-      {data.map((row, rowIndex) => (
-        <div className="vt-row" key={`row-${rowIndex}`}>
+      {tableData.map((row, rowIndex) => (
+        <div className="vt-body-row" key={`row-${rowIndex}`}>
           {columns.map((cell, cellIndex) => (
             <div
-              className="vt-col"
+              className="vt-body-col"
               key={`${cell.key}-${cellIndex}`}
               style={columnStyles(cell)}
             >

@@ -4,34 +4,40 @@
   white-space: nowrap;
   overflow-x: auto;
   border-color: rgba(223, 225, 229, 0);
-  box-shadow: 0 1px 6px rgba(32,33,36,.28);
+  box-shadow: 0 1px 6px rgba(32, 33, 36, .28);
   max-width: fit-content;
 }
 
-.vt-table-striped > .vt-row:nth-child(2n) {
+.vt-table-striped>.vt-body-row:nth-child(2n) {
+  width: fit-content;
+  max-width: fit-content;
   background-color: rgba(135, 137, 144, 0.278);
 }
 
-.vt-table-hover > .vt-row:hover {
-  background-color: rgba(32,33,36,.28);
+.vt-table-hover>.vt-body-row:hover {
+  width: fit-content;
+  max-width: fit-content;
+  background-color:  rgba(135, 137, 144, 0.278);
 }
 
-.vt-header {
+.vt-header-col {
   display: inline-block;
   padding: 5px;
-  border-bottom: 2px solid rgba(32,33,36,.28);
+  border-bottom: 2px solid rgba(32, 33, 36, .28);
 }
 
-.vt-row {
+.vt-body-row {
   display: block;
-  /* border-bottom: 1px solid rgba(32,33,36,.28); */
+  width: fit-content;
+  max-width: fit-content;
+  border-bottom: 1px solid rgba(32, 33, 36, .28);
 }
 
 /* .vt-row:hover {
   background-color: rgba(32,33,36,.28);
 } */
 
-.vt-col {
+.vt-body-col {
   display: inline-block;
   padding: 5px;
 }
