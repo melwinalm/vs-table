@@ -41,7 +41,15 @@ function App() {
       <div>
         <h3>Basic Static Table</h3>
         <Versatiletable
+          className="vt-table-hover"
           data={DATA}
+          options={{
+            defaultSort: {
+              sortField: "id",
+              sortOrder: "asc",
+              numericSort: true
+            }
+          }}
           columns={[
             {
               key: "id",
@@ -80,6 +88,7 @@ function App() {
       <div>
         <h3>Static Table with Custom Cell Rendering</h3>
         <Versatiletable
+          className="vt-table-striped"
           data={DATA}
           columns={[
             {
@@ -109,7 +118,7 @@ function App() {
               key: "gender",
               headerTitle: "Gender",
               width: "150px",
-              cell: (val) => (val == "Male" ? "M" : "F"),
+              cell: (val) => (val === "Male" ? "M" : "F"),
               customHeader: ((val) => {
                 return (
                   <strong title="I'm tooltip">{val}</strong>
