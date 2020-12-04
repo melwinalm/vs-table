@@ -1,4 +1,4 @@
-import Versatiletable from "./components/VersatileTable";
+import Versatiletable from "./VersatileTable/VersatileTable";
 
 const DATA = [
   { id: 1, first_name: "Cleavland", last_name: "Guillot", gender: "Male" },
