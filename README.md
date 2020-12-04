@@ -6,6 +6,7 @@
 
 - Every prop name should follow camelCase naming convention
 - Color should always be mentioned in `rgba` format
+- Props which take boolean value should always have `is` prefix. Eg. isSortable, isLoading etc.
 
 #### Dev Tasks
 
@@ -27,16 +28,19 @@
 - [ ] Column specific search
 - [ ] Entire table search
 - [ ] Row drag and drop
+- [ ] Automatically detect the column type (column, number, date) and attach that specific filter to the column automtically
 
 ### Documentation
 
 - className `string`
 - columns `array`
 	- key `string`
+	- type `string | function` - `Under develoment` <!-- TODO: This will be used to determine what type of sorting will be used when sorting based on this column. Or the user can pass a custom comparator function -->
 	- headerTitle `string` <!-- TODO: I think this should be removed since we have customHeader prop  -->
 	- width `css width property`
 	- cell `Component` <!-- TODO: Probably renaming this to cellRender would be cleaner -->
 	- customHeader `Component` <!-- TODO: Renaming this to headerRender to follow consistent naming convention -->
+	- isSortable `boolean` - `Under development`
 - data `array`
 - height `css height property` - `Under development`
 - isLoading `boolean` - `Under development`
