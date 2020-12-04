@@ -86,7 +86,7 @@ function Versatiletable({
               key={`${cell.key}-${cellIndex}`}
               style={columnStyles(cell)}
             >
-              {cell.cell ? cell.cell(row[cell.key]) : row[cell.key]}
+              {cell.cellRender ? cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex) : row[cell.key]}
             </div>
           ))}
         </div>

@@ -44,7 +44,7 @@
 	- type `string | function` - `Under develoment` <!-- TODO: This will be used to determine what type of sorting will be used when sorting based on this column. Or the user can pass a custom comparator function -->
 	- headerTitle `string` <!-- TODO: I think this should be removed since we have customHeader prop  -->
 	- width `css width property`
-	- cell `Component` <!-- TODO: Probably renaming this to cellRender would be cleaner -->
+	- cellRender `Component` (val, rowData, data, columnKey, index)
 	- customHeader `Component` <!-- TODO: Renaming this to headerRender to follow consistent naming convention -->
 	- isSortable `boolean` - `Under development`
 - data `array`

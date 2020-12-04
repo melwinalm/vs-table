@@ -108,7 +108,7 @@ function App() {
               key: "gender",
               headerTitle: "Gender",
               width: "150px",
-              cell: (val) => (val === "Male" ? "M" : "F"),
+              cellRender: (val) => (val === "Male" ? "M" : "F"),
               customHeader: ((val) => {
                 return (
                   <strong title="I'm tooltip">{val}</strong>
