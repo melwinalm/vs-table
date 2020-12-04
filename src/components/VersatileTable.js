@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import chevronUpIcon from "../assets/icons/chevron-up.svg";
 import chevronDownIcon from "../assets/icons/chevron-down.svg";
 import "./VersatileTable.css";
+import Sorting from './others/sorting';
 
 const tableStyles = (styleProp) => {
   if (styleProp) {
@@ -34,47 +35,25 @@ const getClassNames = (classes) => {
   return `vt-table ${classes}`;
 }
 
-function Versatiletable({ data, columns, style, className, options }) {
+function Versatiletable({ 
+  data = [],
+  columns = [],
+  style = {},
+  className = "",
+  options = {}
+ }) {
 
   const [sortOrder, setSortOrder] = useState(options && options.defaultSort && options.defaultSort.sortOrder ? options.defaultSort.sortOrder : null);
-  const [sortField, setSortField] = useState(options && options.defaultSort && options.defaultSort.sortField ? options.defaultSort.sortField : null);
+  const [sortField, setSortField] = useState(options && options.defaultSort && options.defaultSort.sortField ? options.defaultSort.sortField : "asc");
+  const [sortType, setSortType] = useState(options && options.defaultSort && options.defaultSort.sortType ? options.defaultSort.sortType : "string");
 
-  const sortFunction = (data, options) => {
+  const [tableData, setTableData] = useState([]);
 
-    if (options && options.defaultSort) {
+  useEffect(() => {
+    Sorting(sortType, data, sortField, sortOrder)
+    setTableData(data);
+  }, [data]);
 
-      if (options.defaultSort.numericSort) {
-
-        let sortedData = null;
-
-        if (sortOrder && sortOrder.toLowerCase() === 'asc' && sortField) {
-          sortedData = data.sort((a, b) => a[sortField] - b[sortField]);
-          return sortedData;
-        } else if (sortOrder && sortOrder.toLowerCase() === 'desc' && sortField) {
-          sortedData = data.sort((a, b) => b[sortField] - a[sortField]);
-          return sortedData;
-        }
-      } else {
-
-        let sortedData = null;
-
-        if (sortOrder && sortOrder.toLowerCase() === 'asc' && sortField) {
-          sortedData = data.sort((a, b) => (a[sortField] < b[sortField] ? -1 : 1));
-          return sortedData;
-        } else if (sortOrder && sortOrder.toLowerCase() === 'desc' && sortField) {
-          sortedData = data.sort((a, b) => (a[sortField] > b[sortField] ? -1 : 1));
-          return sortedData;
-        }
-
-      }
-
-    }
-
-    return data;
-  }
-
-  let tableData = sortFunction(data, options);
-  
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
       <div className="vt-header-row">

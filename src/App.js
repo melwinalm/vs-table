@@ -24,8 +24,8 @@ function App() {
           options={{
             defaultSort: {
               sortField: "id",
-              sortOrder: "asc",
-              numericSort: true
+              sortOrder: "desc",
+              sortType: "number"
             }
           }}
           columns={[
