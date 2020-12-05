@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import chevronUpIcon from "./assets/icons/chevron-up.svg";
 import chevronDownIcon from "./assets/icons/chevron-down.svg";
 import "./VersatileTable.scss";
+import Sorting from './utils/sorting';
 
 const tableStyles = (styleProp) => {
   if (styleProp) {
@@ -31,50 +32,36 @@ const columnStyles = (styleProp) => {
 }
 
 const getClassNames = (classes) => {
-  return `vt-table ${classes}`;
+  if (classes) {
+    return `vt-table ${classes}`;
+  }
+  return "vt-table-basic";
 }
 
-function Versatiletable({ data, columns, style, className, options }) {
+function Versatiletable({
+  data = [],
+  columns = [],
+  style = {},
+  className = "",
+  options = {}
+}) {
 
-  const [sortOrder, setSortOrder] = useState(options && options.defaultSort && options.defaultSort.sortOrder ? options.defaultSort.sortOrder : null);
+  const [sortOrder, setSortOrder] = useState(options && options.defaultSort && options.defaultSort.sortOrder ? options.defaultSort.sortOrder : "asc");
   const [sortField, setSortField] = useState(options && options.defaultSort && options.defaultSort.sortField ? options.defaultSort.sortField : null);
+  const [sortType, setSortType] = useState(options && options.defaultSort && options.defaultSort.sortType ? options.defaultSort.sortType : "string");
 
-  const sortFunction = (data, options) => {
+  const [tableData, setTableData] = useState([]);
 
-    if (options && options.defaultSort) {
-
-      if (options.defaultSort.numericSort) {
-
-        let sortedData = null;
-
-        if (sortOrder && sortOrder.toLowerCase() === 'asc' && sortField) {
-          sortedData = data.sort((a, b) => a[sortField] - b[sortField]);
-          return sortedData;
-        } else if (sortOrder && sortOrder.toLowerCase() === 'desc' && sortField) {
-          sortedData = data.sort((a, b) => b[sortField] - a[sortField]);
-          return sortedData;
-        }
-      } else {
-
-        let sortedData = null;
-
-        if (sortOrder && sortOrder.toLowerCase() === 'asc' && sortField) {
-          sortedData = data.sort((a, b) => (a[sortField] < b[sortField] ? -1 : 1));
-          return sortedData;
-        } else if (sortOrder && sortOrder.toLowerCase() === 'desc' && sortField) {
-          sortedData = data.sort((a, b) => (a[sortField] > b[sortField] ? -1 : 1));
-          return sortedData;
-        }
-
-      }
-
+  useEffect(() => {
+    console.log("sortOrder:", sortOrder);
+    console.log("sortField:", sortField);
+    console.log("data:", data);
+    if (sortOrder && sortField) {
+      Sorting(sortType, data, sortField, sortOrder)
     }
+    setTableData(data);
+  }, [data, sortField, sortOrder, sortType]);
 
-    return data;
-  }
-
-  let tableData = sortFunction(data, options);
-  
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
       <div className="vt-header-row">
@@ -85,16 +72,16 @@ function Versatiletable({ data, columns, style, className, options }) {
             style={headerStyles(header)}
           >
             {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
-            <img 
-              className="sort-up-icon" 
-              src={chevronUpIcon} 
+            {sortField && <img
+              className="sort-up-icon"
+              src={chevronUpIcon}
               alt="chevron-up"
-              style={header.key === sortField && sortOrder === "desc" ? { opacity: 1 } : { opacity: 0.2 }} />
-            <img 
-              className="sort-down-icon" 
-              src={chevronDownIcon} 
-              alt="chevron-down" 
-              style={header.key === sortField && sortOrder === "asc" ? { opacity: 1 } : { opacity: 0.2 }} />
+              style={header.key === sortField && sortOrder === "desc" ? { opacity: 1 } : { opacity: 0.2 }} />}
+            {sortField && <img
+              className="sort-down-icon"
+              src={chevronDownIcon}
+              alt="chevron-down"
+              style={header.key === sortField && sortOrder === "asc" ? { opacity: 1 } : { opacity: 0.2 }} />}
           </div>
         ))}
       </div>
@@ -107,7 +94,7 @@ function Versatiletable({ data, columns, style, className, options }) {
               key={`${cell.key}-${cellIndex}`}
               style={columnStyles(cell)}
             >
-              {cell.cell ? cell.cell(row[cell.key]) : row[cell.key]}
+              {cell.cellRender ? cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex) : row[cell.key]}
             </div>
           ))}
         </div>
