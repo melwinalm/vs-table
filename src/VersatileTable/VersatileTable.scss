@@ -42,6 +42,40 @@
 
 }
 
+.vt-table-basic {
+    width: auto;
+    display: block;
+    white-space: nowrap;
+    overflow-x: auto;
+    max-width: fit-content;
+
+    .vt-header-col {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+
+        .sort-up-icon {
+            display: none;
+        }
+
+        .sort-down-icon {
+            display: none;
+        }
+    }
+
+    .vt-body-row {
+        display: block;
+        width: fit-content;
+        max-width: fit-content;
+    }
+
+    .vt-body-col {
+        display: inline-block;
+        padding: 5px;
+    }
+
+}
+
 .vt-table-striped {
     &>.vt-body-row {
         &:nth-child(2n) {
