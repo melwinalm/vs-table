@@ -72,16 +72,19 @@ function Versatiletable({
             style={headerStyles(header)}
           >
             {header.customHeader ? header.customHeader(header.headerTitle) : header.headerTitle}
-            {sortField && <img
-              className="sort-up-icon"
-              src={chevronUpIcon}
-              alt="chevron-up"
-              style={header.key === sortField && sortOrder === "desc" ? { opacity: 1 } : { opacity: 0.2 }} />}
-            {sortField && <img
-              className="sort-down-icon"
-              src={chevronDownIcon}
-              alt="chevron-down"
-              style={header.key === sortField && sortOrder === "asc" ? { opacity: 1 } : { opacity: 0.2 }} />}
+            {sortField && <span>
+              <img
+                className="sort-up-icon"
+                src={chevronUpIcon}
+                alt="chevron-up"
+                style={header.key === sortField && sortOrder === "desc" ? { opacity: 1 } : { opacity: 0.2 }} />
+              <img
+                className="sort-down-icon"
+                src={chevronDownIcon}
+                alt="chevron-down"
+                style={header.key === sortField && sortOrder === "asc" ? { opacity: 1 } : { opacity: 0.2 }} />
+            </span>}
+
           </div>
         ))}
       </div>
