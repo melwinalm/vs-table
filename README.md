@@ -53,8 +53,8 @@
 - loadingRender `Component` - `Under development`
 - options `object`
 	- defaultSort `object`
-			- sortField `string`
-			- sortOrder `string`
-			- numericSort `boolean` <!-- TODO: Instead of having a boolean option, it should more like sortType which would take various options. What do you say? -->
+		- sortField `string`
+		- sortOrder `string`
+		- sortType `string`
+  - noRecordsMessageRenderer - `string|Component`
 - width `css width property` - `Under development`
-- noRecordsMessageRenderer - `string|Component` - `Under Development`
