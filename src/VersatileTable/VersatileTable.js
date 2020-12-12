@@ -65,13 +65,11 @@ function Versatiletable({
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    console.log("sortOrder:", sortOrder);
-    console.log("sortField:", sortField);
-    console.log("data:", data);
+    let newData = [...data];
     if (sortOrder && sortField) {
-      Sorting(sortType, data, sortField, sortOrder);
+      Sorting(sortType, newData, sortField, sortOrder);
     }
-    setTableData(data);
+    setTableData(newData);
   }, [data, sortField, sortOrder, sortType]);
 
   return (

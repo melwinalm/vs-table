@@ -9,8 +9,8 @@ const Sorting = (sortType, data, sortField, sortOrder) => {
       StringSorting(data, sortField, sortOrder);
       break;
     case "date":
-	  DateSorting(data, sortField, sortOrder);
-	  break;
+      DateSorting(data, sortField, sortOrder);
+	    break;
     default:
       StringSorting(data, sortField, sortOrder);
       break;
