@@ -353,6 +353,85 @@ function App() {
           ]}
         />
       </div>
+      <div>
+        <h3>Table With Date Sorting</h3>
+        <Versatiletable
+          data={SAMPLEDATA}
+          options={{
+            defaultSort: {
+              sortField: "date_of_joining",
+              sortOrder: "desc",
+              sortType: "date",
+            },
+          }}
+          columns={[
+            {
+              key: "id",
+              headerTitle: "ID",
+              width: "50px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "first_name",
+              headerTitle: "First Name",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "last_name",
+              headerTitle: "Last Name",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "gender",
+              headerTitle: "Gender",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "email",
+              headerTitle: "Email ID",
+              width: "200px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "phone",
+              headerTitle: "Phone",
+              width: "150px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "salary",
+              headerTitle: "Salary",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "date_of_joining",
+              headerTitle: "DoJ",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+          ]}
+        />
+      </div>
     </>
   );
 }
