@@ -126,7 +126,7 @@ function App() {
           columns={[
             {
               key: "id",
-              headerTitle: "ID",
+              headerRender: "ID",
               width: "50px",
               headerStyle: {
                 fontWeight: "bold",
@@ -134,7 +134,7 @@ function App() {
             },
             {
               key: "first_name",
-              headerTitle: "First Name",
+              headerRender: "First Name",
               width: "100px",
               headerStyle: {
                 fontWeight: "bold",
@@ -142,7 +142,7 @@ function App() {
             },
             {
               key: "last_name",
-              headerTitle: "Last Name",
+              headerRender: "Last Name",
               width: "100px",
               headerStyle: {
                 fontWeight: "bold",
@@ -150,7 +150,7 @@ function App() {
             },
             {
               key: "gender",
-              headerTitle: "Gender",
+              headerRender: "Gender",
               width: "100px",
               headerStyle: {
                 fontWeight: "bold",
@@ -158,7 +158,7 @@ function App() {
             },
             {
               key: "email",
-              headerTitle: "Email ID",
+              headerRender: "Email ID",
               width: "200px",
               headerStyle: {
                 fontWeight: "bold",
@@ -166,7 +166,7 @@ function App() {
             },
             {
               key: "phone",
-              headerTitle: "Phone",
+              headerRender: "Phone",
               width: "150px",
               headerStyle: {
                 fontWeight: "bold",
@@ -174,7 +174,7 @@ function App() {
             },
             {
               key: "salary",
-              headerTitle: "Salary",
+              headerRender: "Salary",
               width: "100px",
               headerStyle: {
                 fontWeight: "bold",
@@ -182,7 +182,7 @@ function App() {
             },
             {
               key: "date_of_joining",
-              headerTitle: "DoJ",
+              headerRender: "DoJ",
               width: "100px",
               headerStyle: {
                 fontWeight: "bold",
@@ -206,14 +206,14 @@ function App() {
           columns={[
             {
               key: "id",
-              headerTitle: "ID",
+              headerRender: "ID",
               headerStyle: {
                 fontWeight: "bold",
               },
             },
             {
               key: "first_name",
-              headerTitle: "First Name",
+              headerRender: "First Name",
               width: "300px",
               headerStyle: {
                 fontWeight: "bold",
@@ -225,7 +225,7 @@ function App() {
             },
             {
               key: "last_name",
-              headerTitle: "Last Name",
+              headerRender: "Last Name",
               width: "300px",
               headerStyle: {
                 fontWeight: "bold",
@@ -237,7 +237,7 @@ function App() {
             },
             {
               key: "gender",
-              headerTitle: "Gender",
+              headerRender: "Gender",
               width: "150px",
               headerStyle: {
                 fontWeight: "bold",
@@ -258,14 +258,14 @@ function App() {
           columns={[
             {
               key: "id",
-              headerTitle: "ID",
+              headerRender: "ID",
               headerStyle: {
                 fontWeight: "bold",
               },
             },
             {
               key: "first_name",
-              headerTitle: "First Name",
+              headerRender: "First Name",
               width: "300px",
               headerStyle: {
                 fontWeight: "bold",
@@ -273,7 +273,7 @@ function App() {
             },
             {
               key: "last_name",
-              headerTitle: "Last Name",
+              headerRender: "Last Name",
               width: "300px",
               headerStyle: {
                 fontWeight: "bold",
@@ -281,7 +281,7 @@ function App() {
             },
             {
               key: "gender",
-              headerTitle: "Gender",
+              headerRender: "Gender",
               width: "150px",
               cellRender: (val) => (val === "Male" ? "M" : "F"),
               customHeader: (val) => {
@@ -309,14 +309,14 @@ function App() {
           columns={[
             {
               key: "id",
-              headerTitle: "ID",
+              headerRender: "ID",
               headerStyle: {
                 fontWeight: "bold",
               },
             },
             {
               key: "first_name",
-              headerTitle: "First Name",
+              headerRender: "First Name",
               width: "300px",
               headerStyle: {
                 fontWeight: "bold",
@@ -328,7 +328,7 @@ function App() {
             },
             {
               key: "last_name",
-              headerTitle: "Last Name",
+              headerRender: "Last Name",
               width: "300px",
               headerStyle: {
                 fontWeight: "bold",
@@ -340,7 +340,7 @@ function App() {
             },
             {
               key: "gender",
-              headerTitle: "Gender",
+              headerRender: "Gender",
               width: "150px",
               headerStyle: {
                 fontWeight: "bold",
@@ -348,6 +348,85 @@ function App() {
               },
               columnStyle: {
                 borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              },
+            },
+          ]}
+        />
+      </div>
+      <div>
+        <h3>Table With Date Sorting</h3>
+        <Versatiletable
+          data={SAMPLEDATA}
+          options={{
+            defaultSort: {
+              sortField: "date_of_joining",
+              sortOrder: "desc",
+              sortType: "date",
+            },
+          }}
+          columns={[
+            {
+              key: "id",
+              headerRender: "ID",
+              width: "50px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "first_name",
+              headerRender: "First Name",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "last_name",
+              headerRender: "Last Name",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "gender",
+              headerRender: "Gender",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "email",
+              headerRender: "Email ID",
+              width: "200px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "phone",
+              headerRender: "Phone",
+              width: "150px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "salary",
+              headerRender: "Salary",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
+              },
+            },
+            {
+              key: "date_of_joining",
+              headerRender: "DoJ",
+              width: "100px",
+              headerStyle: {
+                fontWeight: "bold",
               },
             },
           ]}

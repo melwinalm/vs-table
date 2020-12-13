@@ -1,16 +1,16 @@
-import { SORTING_TYPES } from "./enums";
+import { SORTING_TYPES, SORTING_DATA_TYPES } from "./enums";
 
 const Sorting = (sortType, data, sortField, sortOrder) => {
   switch (sortType) {
-    case "number":
+    case SORTING_DATA_TYPES.NUMBER:
       NumericSorting(data, sortField, sortOrder);
       break;
-    case "string":
+    case SORTING_DATA_TYPES.STRING:
       StringSorting(data, sortField, sortOrder);
       break;
-    case "date":
-	  DateSorting(data, sortField, sortOrder);
-	  break;
+    case SORTING_DATA_TYPES.DATE:
+      DateSorting(data, sortField, sortOrder);
+	    break;
     default:
       StringSorting(data, sortField, sortOrder);
       break;
@@ -33,6 +33,12 @@ const StringSorting = (data, sortField, sortOrder) => {
   }
 };
 
-const DateSorting = (data, sortField, sortOrder) => {};
+const DateSorting = (data, sortField, sortOrder) => {
+  if (sortOrder === SORTING_TYPES.ASCENDING) {
+    data.sort((a, b) => (new Date(a[sortField]).getTime() < new Date(b[sortField]).getTime() ? -1 : 1));
+  } else {
+    data.sort((a, b) => (new Date(a[sortField]).getTime() > new Date(b[sortField]).getTime() ? -1 : 1));
+  }
+};
 
 export default Sorting;

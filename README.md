@@ -25,6 +25,7 @@
 - [ ] Error handling - Table or the application shouldn't crash regardless of what values are passed in props
 - [ ] Migrate current CSS to SCSS
 - [ ] Add profiling support in development mode
+- [ ] Ability for a user to send a custom sort function method (User can send sortType to be number, date, string or can pass a custom sort function also)
 
 ##### Version 2 
 
@@ -42,7 +43,7 @@
 - columns `array`
 	- key `string`
 	- type `string | function` - `Under develoment` <!-- TODO: This will be used to determine what type of sorting will be used when sorting based on this column. Or the user can pass a custom comparator function -->
-	- headerTitle `string` <!-- TODO: I think this should be removed since we have customHeader prop  -->
+	- headerRender `string` <!-- TODO: I think this should be removed since we have customHeader prop  -->
 	- width `css width property`
 	- cellRender `Component` (val, rowData, data, columnKey, index)
 	- customHeader `Component` <!-- TODO: Renaming this to headerRender to follow consistent naming convention -->

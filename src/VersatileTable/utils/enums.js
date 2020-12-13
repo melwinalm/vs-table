@@ -3,4 +3,10 @@ const SORTING_TYPES = {
   DESCENDING: "desc",
 };
 
-export { SORTING_TYPES };
+const SORTING_DATA_TYPES = {
+  NUMBER: "number",
+  STRING: "string",
+  DATE: "date"
+}
+
+export { SORTING_TYPES, SORTING_DATA_TYPES };
