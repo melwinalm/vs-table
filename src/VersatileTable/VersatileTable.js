@@ -4,6 +4,7 @@ import chevronDownIcon from "./assets/icons/chevron-down.svg";
 import "./VersatileTable.scss";
 import Sorting from "./utils/sorting";
 import NoRecordComponent from "./components/NoRecordComponent/NoRecordComponent";
+import { ValueTruncator } from "./utils/filters"
 
 const tableStyles = (styleProp) => {
   if (styleProp) {
@@ -72,6 +73,16 @@ function Versatiletable({
     setTableData(newData);
   }, [data, sortField, sortOrder, sortType]);
 
+  const TableCell = (cell, row, tableData, rowIndex) => {
+    if (cell && cell.cellRender) {
+      return cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex)
+    } else if (cell && cell.valueTruncate) {
+      return ValueTruncator(row[cell.key], cell.valueTruncate.limit, cell.valueTruncate.truncateString);
+    } else {
+      return row[cell.key];
+    }
+  }
+
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
       <div className="vt-header-row">
@@ -120,15 +131,7 @@ function Versatiletable({
               key={`${cell.key}-${cellIndex}`}
               style={columnStyles(cell)}
             >
-              {cell.cellRender
-                ? cell.cellRender(
-                    row[cell.key],
-                    row,
-                    tableData,
-                    cell.key,
-                    rowIndex
-                  )
-                : row[cell.key]}
+              {TableCell(cell, row, tableData, rowIndex)}
             </div>
           ))}
         </div>
