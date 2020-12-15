@@ -5,6 +5,7 @@ import "./VersatileTable.scss";
 import Sorting from "./utils/sorting";
 import NoRecordComponent from "./components/NoRecordComponent/NoRecordComponent";
 import { ValueTruncator } from "./utils/filters"
+import PaginationComponent from "./components/PaginationComponent/PaginationComponent";
 
 const tableStyles = (styleProp) => {
   if (styleProp) {
@@ -63,6 +64,14 @@ function Versatiletable({
       : "string"
   );
 
+  const [defaultPageSize, setDefaultPageSize] = useState(
+    options && options.defaultPageSize
+      ? options.defaultPageSize
+      : 10
+  );
+
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
@@ -81,6 +90,10 @@ function Versatiletable({
     } else {
       return row[cell.key];
     }
+  }
+  
+  const ChangePage = (count) => {
+    setCurrentPage(currentPage + count);
   }
 
   return (
@@ -123,7 +136,7 @@ function Versatiletable({
         ))}
       </div>
 
-      {tableData.map((row, rowIndex) => (
+      {tableData.filter((row, rowIndex) => (rowIndex >= (currentPage-1) * defaultPageSize) && rowIndex <= (currentPage * defaultPageSize) - 1).map((row, rowIndex) => (
         <div className="vt-body-row" key={`row-${rowIndex}`}>
           {columns.map((cell, cellIndex) => (
             <div
@@ -140,6 +153,8 @@ function Versatiletable({
       {(!data || data.length === 0) && (
         <NoRecordComponent data={tableData} options={options} />
       )}
+
+      <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>
     </div>
   );
 }

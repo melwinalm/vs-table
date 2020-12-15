@@ -4,6 +4,7 @@ import BasicTableWithCellRenderer from './VersatileTable/examples/BasicTableWith
 import TableWithCustomNoRecordsMessage from './VersatileTable/examples/TableWithCustomNoRecordsMessage';
 import TableWithDataSorting from './VersatileTable/examples/TableWithDataSorting';
 import TableWithTruncateCell from './VersatileTable/examples/TableWithTruncateCell';
+import BasicTableWithPagination from './VersatileTable/examples/BasicTableWithPagination';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
       </div>
       <div>
         <TableWithTruncateCell />
+      </div>
+      <div>
+        <BasicTableWithPagination/>
       </div>
     </>
   );
