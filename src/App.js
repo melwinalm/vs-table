@@ -3,6 +3,7 @@ import BasicTableWithHoverEffect from './VersatileTable/examples/BasicTableWithH
 import BasicTableWithCellRenderer from './VersatileTable/examples/BasicTableWithCellRenderer';
 import TableWithCustomNoRecordsMessage from './VersatileTable/examples/TableWithCustomNoRecordsMessage';
 import TableWithDataSorting from './VersatileTable/examples/TableWithDataSorting';
+import TableWithTruncateCell from './VersatileTable/examples/TableWithTruncateCell';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       </div>
       <div>
         <TableWithDataSorting/>
+      </div>
+      <div>
+        <TableWithTruncateCell />
       </div>
     </>
   );
