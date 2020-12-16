@@ -9,7 +9,9 @@ function BasicTableWithPagination(){
       <Versatiletable
 				data={SampleData1}
 				options={{
-					defaultPageSize: 3
+          pagination: {
+            defaultPageSize: 3
+          }
 				}}
         columns={[
           {

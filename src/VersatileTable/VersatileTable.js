@@ -65,10 +65,15 @@ function Versatiletable({
   );
 
   const [defaultPageSize, setDefaultPageSize] = useState(
-    options && options.defaultPageSize
-      ? options.defaultPageSize
+    options && options.pagination && options.pagination.defaultPageSize
+      ? options.pagination.defaultPageSize
       : 10
   );
+
+  const [isPagination, setIsPagination] = useState(
+    options && options.pagination
+    ? true
+    : false)
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -154,7 +159,7 @@ function Versatiletable({
         <NoRecordComponent data={tableData} options={options} />
       )}
 
-      <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>
+      {isPagination && tableData && tableData.length> 0 && <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>}
     </div>
   );
 }
