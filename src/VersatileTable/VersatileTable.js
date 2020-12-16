@@ -47,6 +47,7 @@ function Versatiletable({
   style = {},
   className = "",
   options = {},
+  subComponents = {},
 }) {
   const [sortOrder, setSortOrder] = useState(
     options && options.defaultSort && options.defaultSort.sortOrder
@@ -159,7 +160,11 @@ function Versatiletable({
         <NoRecordComponent data={tableData} options={options} />
       )}
 
-      {isPagination && tableData && tableData.length> 0 && <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>}
+      {isPagination && tableData && tableData.length> 0 && 
+      (subComponents.PaginationComponent 
+        ? <subComponents.PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>
+        : <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>)
+      }
     </div>
   );
 }
