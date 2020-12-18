@@ -74,7 +74,7 @@ function Versatiletable({
   const [isPagination, setIsPagination] = useState(
     options && options.pagination
     ? true
-    : false)
+    : false);
 
   const [currentPage, setCurrentPage] = useState(1);
 
