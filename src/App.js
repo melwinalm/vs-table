@@ -5,6 +5,7 @@ import TableWithCustomNoRecordsMessage from './VersatileTable/examples/TableWith
 import TableWithDataSorting from './VersatileTable/examples/TableWithDataSorting';
 import TableWithTruncateCell from './VersatileTable/examples/TableWithTruncateCell';
 import BasicTableWithPagination from './VersatileTable/examples/BasicTableWithPagination';
+import BasicTableWithCustomPagination from './VersatileTable/examples/BasicTableWithCustomPagination';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       </div>
       <div>
         <BasicTableWithPagination/>
+      </div>
+      <div>
+        <BasicTableWithCustomPagination/>
       </div>
     </>
   );
