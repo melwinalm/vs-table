@@ -1,6 +1,10 @@
 import React from 'react';
 import Versatiletable from './../VersatileTable';
 
+function CustomRecordMessageComponent (){
+	return <div style={{textAlign: "center"}}>Nothing here.</div>;
+}
+
 function TableWithCustomNoRecordsMessage(){
 	return (
 		<>
@@ -13,10 +17,10 @@ function TableWithCustomNoRecordsMessage(){
 						sortField: "id",
 						sortOrder: "desc",
 						sortType: "number",
-					},
-					// noRecordsMessageRenderer: () => {
-					//   return <div style={{textAlign: "center"}}>Nothing here.</div>;
-					// }
+					}
+				}}
+				subComponents={{
+					NoRecordComponent: CustomRecordMessageComponent
 				}}
 				columns={[
 					{
