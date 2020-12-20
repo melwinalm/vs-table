@@ -6,6 +6,7 @@ import TableWithDataSorting from './examples/TableWithDataSorting';
 import TableWithTruncateCell from './examples/TableWithTruncateCell';
 import BasicTableWithPagination from './examples/BasicTableWithPagination';
 import BasicTableWithCustomPagination from './examples/BasicTableWithCustomPagination';
+import TableWithFormattingFunc from './examples/TableWithFormattingFunc';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
       </div>
       <div>
         <BasicTableWithCustomPagination/>
+      </div>
+      <div>
+        <TableWithFormattingFunc/>
       </div>
     </>
   );
