@@ -6,6 +6,7 @@ import TableWithDataSorting from './VersatileTable/examples/TableWithDataSorting
 import TableWithTruncateCell from './VersatileTable/examples/TableWithTruncateCell';
 import BasicTableWithPagination from './VersatileTable/examples/BasicTableWithPagination';
 import BasicTableWithCustomPagination from './VersatileTable/examples/BasicTableWithCustomPagination';
+import Bouncer from './VersatileTable/components/Bouncer/Bouncer';
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
       <div>
         <BasicTableWithCustomPagination/>
       </div>
+      <div>
+        <Bouncer/>
+      </div>
+      
     </>
   );
 }
