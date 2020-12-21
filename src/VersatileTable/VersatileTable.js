@@ -156,9 +156,11 @@ function Versatiletable({
         </div>
       ))}
 
-      {(!data || data.length === 0) && (
-        <NoRecordComponent data={tableData} options={options} />
-      )}
+      {(!data || data.length === 0) &&
+        (subComponents.NoRecordComponent
+          ? <subComponents.NoRecordComponent />
+          : <NoRecordComponent />)
+      }
 
       {isPagination && tableData && tableData.length> 0 && 
       (subComponents.PaginationComponent 

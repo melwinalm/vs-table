@@ -1,11 +1,12 @@
-import BasicTable from './VersatileTable/examples/BasicTable';
-import BasicTableWithHoverEffect from './VersatileTable/examples/BasicTableWithHoverEffect';
-import BasicTableWithCellRenderer from './VersatileTable/examples/BasicTableWithCellRenderer';
-import TableWithCustomNoRecordsMessage from './VersatileTable/examples/TableWithCustomNoRecordsMessage';
-import TableWithDataSorting from './VersatileTable/examples/TableWithDataSorting';
-import TableWithTruncateCell from './VersatileTable/examples/TableWithTruncateCell';
-import BasicTableWithPagination from './VersatileTable/examples/BasicTableWithPagination';
-import BasicTableWithCustomPagination from './VersatileTable/examples/BasicTableWithCustomPagination';
+import BasicTable from './examples/BasicTable';
+import BasicTableWithHoverEffect from './examples/BasicTableWithHoverEffect';
+import BasicTableWithCellRenderer from './examples/BasicTableWithCellRenderer';
+import TableWithCustomNoRecordsMessage from './examples/TableWithCustomNoRecordsMessage';
+import TableWithDataSorting from './examples/TableWithDataSorting';
+import TableWithTruncateCell from './examples/TableWithTruncateCell';
+import BasicTableWithPagination from './examples/BasicTableWithPagination';
+import BasicTableWithCustomPagination from './examples/BasicTableWithCustomPagination';
+import TableWithFormattingFunc from './examples/TableWithFormattingFunc';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
       </div>
       <div>
         <BasicTableWithCustomPagination/>
+      </div>
+      <div>
+        <TableWithFormattingFunc/>
       </div>
     </>
   );
