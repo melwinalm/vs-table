@@ -1,5 +1,5 @@
 import React from 'react';
-import Versatiletable from './../VersatileTable';
+import Versatiletable, {Formatters} from './../VersatileTable';
 import SampleData1 from './SampleData1';
 
 function TableWithTruncateCell(){
@@ -48,9 +48,7 @@ function TableWithTruncateCell(){
             headerStyle: {
               fontWeight: "bold",
             },
-            valueTruncate: {
-              limit: 10
-            }
+            cellRender: val => new Formatters(val).Truncate(10, '...').value
           },
           {
             key: "phone",

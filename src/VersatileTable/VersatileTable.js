@@ -3,8 +3,8 @@ import chevronUpIcon from "./assets/icons/chevron-up.svg";
 import chevronDownIcon from "./assets/icons/chevron-down.svg";
 import "./VersatileTable.scss";
 import Sorting from "./utils/sorting";
+import { SORTING_TYPES } from './utils/enums';
 import NoRecordComponent from "./components/NoRecordComponent/NoRecordComponent";
-import { ValueTruncator } from "./utils/filters"
 import PaginationComponent from "./components/PaginationComponent/PaginationComponent";
 
 const tableStyles = (styleProp) => {
@@ -91,9 +91,8 @@ function Versatiletable({
   const TableCell = (cell, row, tableData, rowIndex) => {
     if (cell && cell.cellRender) {
       return cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex)
-    } else if (cell && cell.valueTruncate) {
-      return ValueTruncator(row[cell.key], cell.valueTruncate.limit, cell.valueTruncate.truncateString);
-    } else {
+    }
+    else {
       return row[cell.key];
     }
   }
@@ -122,7 +121,7 @@ function Versatiletable({
                   src={chevronUpIcon}
                   alt="chevron-up"
                   style={
-                    header.key === sortField && sortOrder === "desc"
+                    header.key === sortField && sortOrder === SORTING_TYPES.DESCENDING
                       ? { opacity: 1 }
                       : { opacity: 0.2 }
                   }
@@ -132,7 +131,7 @@ function Versatiletable({
                   src={chevronDownIcon}
                   alt="chevron-down"
                   style={
-                    header.key === sortField && sortOrder === "asc"
+                    header.key === sortField && sortOrder === SORTING_TYPES.ASCENDING
                       ? { opacity: 1 }
                       : { opacity: 0.2 }
                   }
