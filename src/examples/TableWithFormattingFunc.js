@@ -33,7 +33,7 @@ function BasicTable(){
             headerStyle: {
               fontWeight: "bold",
 						},
-						cellRender: val => Formatters.Currency(val, '₹')
+						cellRender: val => new Formatters(val).Currency('₹')
           }
         ]}
       />

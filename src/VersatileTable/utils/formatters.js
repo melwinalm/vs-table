@@ -1,5 +1,12 @@
-const Currency = (val, currencyField = '$') => {
-	return currencyField + val;
+class Formatters{
+	constructor(val){
+		this.value = val;
+	}
+
+	Currency(currencyType = '$'){
+		this.value = currencyType + this.value;
+		return this.value;
+	}
 }
 
-export { Currency };
+export default Formatters;
