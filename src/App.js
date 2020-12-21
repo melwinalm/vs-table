@@ -7,6 +7,7 @@ import TableWithTruncateCell from './examples/TableWithTruncateCell';
 import BasicTableWithPagination from './examples/BasicTableWithPagination';
 import BasicTableWithCustomPagination from './examples/BasicTableWithCustomPagination';
 import TableWithFormattingFunc from './examples/TableWithFormattingFunc';
+import BasicTableWithHeaderTooltipRender from './examples/BasicTableWithHeaderTooltipRender';
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
       </div>
       <div>
         <TableWithFormattingFunc/>
+      </div>
+      <div>
+        <BasicTableWithHeaderTooltipRender/>
       </div>
     </>
   );
