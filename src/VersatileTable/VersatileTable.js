@@ -107,6 +107,7 @@ function Versatiletable({
       <div className="vt-header-row">
         {columns.map((header, headerIndex) => (
           <div
+            title={header.headerTooltipRender ? header.headerTooltipRender : ""}
             className="vt-header-col"
             key={`${header.key}-${headerIndex}`}
             style={headerStyles(header)}
