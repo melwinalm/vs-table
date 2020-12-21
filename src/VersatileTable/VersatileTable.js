@@ -5,7 +5,6 @@ import "./VersatileTable.scss";
 import Sorting from "./utils/sorting";
 import { SORTING_TYPES } from './utils/enums';
 import NoRecordComponent from "./components/NoRecordComponent/NoRecordComponent";
-import { ValueTruncator } from "./utils/filters"
 import PaginationComponent from "./components/PaginationComponent/PaginationComponent";
 
 const tableStyles = (styleProp) => {
@@ -92,9 +91,8 @@ function Versatiletable({
   const TableCell = (cell, row, tableData, rowIndex) => {
     if (cell && cell.cellRender) {
       return cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex)
-    } else if (cell && cell.valueTruncate) {
-      return ValueTruncator(row[cell.key], cell.valueTruncate.limit, cell.valueTruncate.truncateString);
-    } else {
+    }
+    else {
       return row[cell.key];
     }
   }
