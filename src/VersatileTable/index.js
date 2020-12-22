@@ -1,5 +1,5 @@
-import VersatileTable from './VersatileTable';
-import Formatters from './utils/formatters';
+import VersatileTable from "./VersatileTable";
+import Formatters from "./utils/formatters";
 
 // Default export
 export default VersatileTable;

@@ -10,7 +10,7 @@ const Sorting = (sortType, data, sortField, sortOrder) => {
       break;
     case SORTING_DATA_TYPES.DATE:
       DateSorting(data, sortField, sortOrder);
-	    break;
+      break;
     default:
       StringSorting(data, sortField, sortOrder);
       break;
@@ -35,9 +35,17 @@ const StringSorting = (data, sortField, sortOrder) => {
 
 const DateSorting = (data, sortField, sortOrder) => {
   if (sortOrder === SORTING_TYPES.ASCENDING) {
-    data.sort((a, b) => (new Date(a[sortField]).getTime() < new Date(b[sortField]).getTime() ? -1 : 1));
+    data.sort((a, b) =>
+      new Date(a[sortField]).getTime() < new Date(b[sortField]).getTime()
+        ? -1
+        : 1
+    );
   } else {
-    data.sort((a, b) => (new Date(a[sortField]).getTime() > new Date(b[sortField]).getTime() ? -1 : 1));
+    data.sort((a, b) =>
+      new Date(a[sortField]).getTime() > new Date(b[sortField]).getTime()
+        ? -1
+        : 1
+    );
   }
 };
 

@@ -1,14 +1,15 @@
-import BasicTable from './examples/BasicTable';
-import BasicTableWithHoverEffect from './examples/BasicTableWithHoverEffect';
-import BasicTableWithCellRenderer from './examples/BasicTableWithCellRenderer';
-import TableWithCustomNoRecordsMessage from './examples/TableWithCustomNoRecordsMessage';
-import TableWithDataSorting from './examples/TableWithDataSorting';
-import TableWithTruncateCell from './examples/TableWithTruncateCell';
-import BasicTableWithPagination from './examples/BasicTableWithPagination';
-import BasicTableWithCustomPagination from './examples/BasicTableWithCustomPagination';
-import TableWithFormattingFunc from './examples/TableWithFormattingFunc';
-import BasicTableWithHeaderTooltipRender from './examples/BasicTableWithHeaderTooltipRender';
-import BasicTableWithCustomHeaderCell from './examples/BasicTableWithCustomHeaderCell';
+import BasicTable from "./examples/BasicTable";
+import BasicTableWithHoverEffect from "./examples/BasicTableWithHoverEffect";
+import BasicTableWithCellRenderer from "./examples/BasicTableWithCellRenderer";
+import TableWithCustomNoRecordsMessage from "./examples/TableWithCustomNoRecordsMessage";
+import TableWithDataSorting from "./examples/TableWithDataSorting";
+import TableWithTruncateCell from "./examples/TableWithTruncateCell";
+import BasicTableWithPagination from "./examples/BasicTableWithPagination";
+import BasicTableWithCustomPagination from "./examples/BasicTableWithCustomPagination";
+import TableWithFormattingFunc from "./examples/TableWithFormattingFunc";
+import BasicTableWithHeaderTooltipRender from "./examples/BasicTableWithHeaderTooltipRender";
+import BasicTableWithCustomHeaderCell from "./examples/BasicTableWithCustomHeaderCell";
+import BasicTableWithCellTooltipRender from "./examples/BasicTableWithCellTooltipRender";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
       </div>
       <div>
         <BasicTableWithCustomHeaderCell />
+      </div>
+      <div>
+        <BasicTableWithCellTooltipRender />
       </div>
     </>
   );
