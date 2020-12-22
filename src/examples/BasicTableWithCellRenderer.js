@@ -37,10 +37,7 @@ function BasicTableWithCellRenderer(){
 						key: "gender",
 						headerRender: "Gender",
 						width: "150px",
-						cellRender: (val) => (val === "Male" ? "M" : "F"),
-						customHeader: (val) => {
-							return <strong title="I'm tooltip">{val}</strong>;
-						},
+						cellRender: (val) => (val === "Male" ? "M" : "F")
 					},
 				]}
 			/>
