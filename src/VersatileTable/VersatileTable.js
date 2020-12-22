@@ -73,8 +73,8 @@ function Versatiletable({
 
   const [isPagination, setIsPagination] = useState(
     options && options.pagination
-    ? true
-    : false);
+      ? true
+      : false);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -96,7 +96,7 @@ function Versatiletable({
       return row[cell.key];
     }
   }
-  
+
   const ChangePage = (count) => {
     setCurrentPage(currentPage + count);
   }
@@ -111,36 +111,43 @@ function Versatiletable({
             key={`${header.key}-${headerIndex}`}
             style={headerStyles(header)}
           >
-            {header.headerRender}
-            {sortField && (
-              <span>
-                <img
-                  className="sort-up-icon"
-                  src={chevronUpIcon}
-                  alt="chevron-up"
-                  style={
-                    header.key === sortField && sortOrder === SORTING_TYPES.DESCENDING
-                      ? { opacity: 1 }
-                      : { opacity: 0.2 }
-                  }
-                />
-                <img
-                  className="sort-down-icon"
-                  src={chevronDownIcon}
-                  alt="chevron-down"
-                  style={
-                    header.key === sortField && sortOrder === SORTING_TYPES.ASCENDING
-                      ? { opacity: 1 }
-                      : { opacity: 0.2 }
-                  }
-                />
-              </span>
-            )}
+            {
+              (subComponents.HeaderCellComponent
+                ? <subComponents.HeaderCellComponent headerRender={header.headerRender} sortField={sortField} sortOrder={sortOrder} headerKey={header.key} />
+                : <>
+                  {header.headerRender}
+                  {sortField && (
+                    <span>
+                      <img
+                        className="sort-up-icon"
+                        src={chevronUpIcon}
+                        alt="chevron-up"
+                        style={
+                          header.key === sortField && sortOrder === SORTING_TYPES.DESCENDING
+                            ? { opacity: 1 }
+                            : { opacity: 0.2 }
+                        }
+                      />
+                      <img
+                        className="sort-down-icon"
+                        src={chevronDownIcon}
+                        alt="chevron-down"
+                        style={
+                          header.key === sortField && sortOrder === SORTING_TYPES.ASCENDING
+                            ? { opacity: 1 }
+                            : { opacity: 0.2 }
+                        }
+                      />
+                    </span>
+                  )}
+                </>
+              )
+            }
           </div>
         ))}
       </div>
 
-      {tableData.filter((row, rowIndex) => (rowIndex >= (currentPage-1) * defaultPageSize) && rowIndex <= (currentPage * defaultPageSize) - 1).map((row, rowIndex) => (
+      {tableData.filter((row, rowIndex) => (rowIndex >= (currentPage - 1) * defaultPageSize) && rowIndex <= (currentPage * defaultPageSize) - 1).map((row, rowIndex) => (
         <div className="vt-body-row" key={`row-${rowIndex}`}>
           {columns.map((cell, cellIndex) => (
             <div
@@ -160,10 +167,10 @@ function Versatiletable({
           : <NoRecordComponent />)
       }
 
-      {isPagination && tableData && tableData.length> 0 && 
-      (subComponents.PaginationComponent 
-        ? <subComponents.PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>
-        : <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage}/>)
+      {isPagination && tableData && tableData.length > 0 &&
+        (subComponents.PaginationComponent
+          ? <subComponents.PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage} />
+          : <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage} />)
       }
     </div>
   );

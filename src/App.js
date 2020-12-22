@@ -8,39 +8,43 @@ import BasicTableWithPagination from './examples/BasicTableWithPagination';
 import BasicTableWithCustomPagination from './examples/BasicTableWithCustomPagination';
 import TableWithFormattingFunc from './examples/TableWithFormattingFunc';
 import BasicTableWithHeaderTooltipRender from './examples/BasicTableWithHeaderTooltipRender';
+import BasicTableWithCustomHeaderCell from './examples/BasicTableWithCustomHeaderCell';
 
 function App() {
   return (
     <>
       <div>
-        <BasicTable/>
+        <BasicTable />
       </div>
       <div>
-        <BasicTableWithHoverEffect/>
+        <BasicTableWithHoverEffect />
       </div>
       <div>
-        <BasicTableWithCellRenderer/>
+        <BasicTableWithCellRenderer />
       </div>
       <div>
-        <TableWithCustomNoRecordsMessage/>
+        <TableWithCustomNoRecordsMessage />
       </div>
       <div>
-        <TableWithDataSorting/>
+        <TableWithDataSorting />
       </div>
       <div>
         <TableWithTruncateCell />
       </div>
       <div>
-        <BasicTableWithPagination/>
+        <BasicTableWithPagination />
       </div>
       <div>
-        <BasicTableWithCustomPagination/>
+        <BasicTableWithCustomPagination />
       </div>
       <div>
-        <TableWithFormattingFunc/>
+        <TableWithFormattingFunc />
       </div>
       <div>
-        <BasicTableWithHeaderTooltipRender/>
+        <BasicTableWithHeaderTooltipRender />
+      </div>
+      <div>
+        <BasicTableWithCustomHeaderCell />
       </div>
     </>
   );
