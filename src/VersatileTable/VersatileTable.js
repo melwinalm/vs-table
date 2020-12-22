@@ -111,9 +111,7 @@ function Versatiletable({
             key={`${header.key}-${headerIndex}`}
             style={headerStyles(header)}
           >
-            {header.customHeader
-              ? header.customHeader(header.headerRender)
-              : header.headerRender}
+            {header.headerRender}
             {sortField && (
               <span>
                 <img
