@@ -4,8 +4,10 @@ import chevronDownIcon from "./assets/icons/chevron-down.svg";
 import "./VersatileTable.scss";
 import Sorting from "./utils/sorting";
 import { SORTING_TYPES } from "./utils/enums";
-import NoRecordComponent from "./components/NoRecordComponent/NoRecordComponent";
-import PaginationComponent from "./components/PaginationComponent/PaginationComponent";
+import NoRecordComponent from "./components/Body/NoRecordComponent/NoRecordComponent";
+import PaginationComponent from "./components/Footer/PaginationComponent/PaginationComponent";
+import TableCellComponent from "./components/Body/TableCellComponent/TableCellComponent";
+import HeaderTooltipComponent from "./components/Header/HeaderTooltipComponent/HeaderTooltipComponent";
 
 const tableStyles = (styleProp) => {
   if (styleProp) {
@@ -87,52 +89,6 @@ function Versatiletable({
     setTableData(newData);
   }, [data, sortField, sortOrder, sortType]);
 
-  const TableCell = (cell, row, tableData, rowIndex) => {
-    if (cell && cell.cellRender) {
-      return cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex);
-    } else if (
-      cell &&
-      cell.cellTooltipRender &&
-      typeof cell.cellTooltipRender === "boolean"
-    ) {
-
-      let tooltipPosition = cell.cellTooltipPosition ? cell.cellTooltipPosition : "right";
-      let tooltipClass = `vt-tooltip-content vt-tooltip-${tooltipPosition}`;
-    
-      return (
-        <div className="vt-tooltip">
-          {row[cell.key]}
-          <span className={tooltipClass}>{row[cell.key]}</span>
-        </div>
-      );
-    } else if (
-      cell &&
-      cell.cellTooltipRender &&
-      typeof cell.cellTooltipRender === "function"
-    ) {
-
-      let tooltipPosition = cell.cellTooltipPosition ? cell.cellTooltipPosition : "right";
-      let tooltipClass = `vt-tooltip-content vt-tooltip-${tooltipPosition}`;
-
-      return (
-        <div className="vt-tooltip">
-          {row[cell.key]}
-          <span className={tooltipClass}>
-            {cell.cellTooltipRender(
-              row[cell.key],
-              row,
-              tableData,
-              cell.key,
-              rowIndex
-            )}
-          </span>
-        </div>
-      );
-    } else {
-      return row[cell.key];
-    }
-  };
-
   const ChangePage = (count) => {
     setCurrentPage(currentPage + count);
   };
@@ -142,7 +98,6 @@ function Versatiletable({
       <div className="vt-header-row">
         {columns.map((header, headerIndex) => (
           <div
-            title={header.headerTooltipRender ? header.headerTooltipRender : ""}
             className="vt-header-col"
             key={`${header.key}-${headerIndex}`}
             style={headerStyles(header)}
@@ -156,7 +111,7 @@ function Versatiletable({
               />
             ) : (
               <>
-                {header.headerRender}
+                <HeaderTooltipComponent header={header} headerIndex={headerIndex} />
                 {sortField && (
                   <span>
                     <img
@@ -203,7 +158,7 @@ function Versatiletable({
                 key={`${cell.key}-${cellIndex}`}
                 style={columnStyles(cell)}
               >
-                {TableCell(cell, row, tableData, rowIndex)}
+                <TableCellComponent cell={cell} row={row} tableData={tableData} rowIndex={rowIndex} />
               </div>
             ))}
           </div>

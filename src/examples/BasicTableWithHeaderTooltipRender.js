@@ -13,7 +13,8 @@ function BasicTableWithHeaderTooltipRender(){
           {
             key: "first_name",
             headerRender: "First Name",
-            headerTooltipRender: "This is the customers first name",
+            headerTooltipRender: true,
+            headerTooltipPosition: "top",
             width: "100px",
             headerStyle: {
               fontWeight: "bold",
@@ -22,7 +23,8 @@ function BasicTableWithHeaderTooltipRender(){
           {
             key: "last_name",
             headerRender: "Last Name",
-            headerTooltipRender: "This is the customers last name",
+            headerTooltipRender: true,
+            headerTooltipPosition: "bottom",
             width: "100px",
             headerStyle: {
               fontWeight: "bold",
@@ -31,7 +33,15 @@ function BasicTableWithHeaderTooltipRender(){
           {
             key: "salary",
             headerRender: "Salary",
-            headerTooltipRender: "This is the customers salary",
+            headerTooltipPosition: "left",
+            headerTooltipRender: (val) => {
+              return (
+                <div>
+                  This is a custom tooltip <br />
+                  Value: {val}
+                </div>
+              );
+            },
             width: "100px",
             headerStyle: {
               fontWeight: "bold",

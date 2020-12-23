@@ -1,5 +1,5 @@
 import React from "react";
-import ___ from "../../utils/getter";
+import ___ from "../../../utils/getter";
 import "./NoRecordComponent.scss";
 
 function NoRecordComponent() {

@@ -1,7 +1,7 @@
 import React from "react";
-import ___ from "../../utils/getter";
-import arrowLeft from "../../assets/icons/arrow-left-circle.svg";
-import arrowRight from "../../assets/icons/arrow-right-circle.svg";
+import ___ from "../../../utils/getter";
+import arrowLeft from "../../../assets/icons/arrow-left-circle.svg";
+import arrowRight from "../../../assets/icons/arrow-right-circle.svg";
 import "./PaginationComponent.scss";
 
 function PaginationComponent({
