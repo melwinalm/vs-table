@@ -3,7 +3,7 @@ import chevronUpIcon from "./assets/icons/chevron-up.svg";
 import chevronDownIcon from "./assets/icons/chevron-down.svg";
 import "./VersatileTable.scss";
 import Sorting from "./utils/sorting";
-import { SORTING_TYPES } from './utils/enums';
+import { SORTING_TYPES } from "./utils/enums";
 import NoRecordComponent from "./components/NoRecordComponent/NoRecordComponent";
 import PaginationComponent from "./components/PaginationComponent/PaginationComponent";
 
@@ -72,9 +72,8 @@ function Versatiletable({
   );
 
   const [isPagination, setIsPagination] = useState(
-    options && options.pagination
-      ? true
-      : false);
+    options && options.pagination ? true : false
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -90,16 +89,53 @@ function Versatiletable({
 
   const TableCell = (cell, row, tableData, rowIndex) => {
     if (cell && cell.cellRender) {
-      return cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex)
-    }
-    else {
+      return cell.cellRender(row[cell.key], row, tableData, cell.key, rowIndex);
+    } else if (
+      cell &&
+      cell.cellTooltipRender &&
+      typeof cell.cellTooltipRender === "boolean"
+    ) {
+
+      let tooltipPosition = cell.cellTooltipPosition ? cell.cellTooltipPosition : "right";
+      let tooltipClass = `vt-tooltip-content vt-tooltip-${tooltipPosition}`;
+    
+      return (
+        <div className="vt-tooltip">
+          {row[cell.key]}
+          <span className={tooltipClass}>{row[cell.key]}</span>
+        </div>
+      );
+    } else if (
+      cell &&
+      cell.cellTooltipRender &&
+      typeof cell.cellTooltipRender === "function"
+    ) {
+
+      let tooltipPosition = cell.cellTooltipPosition ? cell.cellTooltipPosition : "right";
+      let tooltipClass = `vt-tooltip-content vt-tooltip-${tooltipPosition}`;
+
+      return (
+        <div className="vt-tooltip">
+          {row[cell.key]}
+          <span className={tooltipClass}>
+            {cell.cellTooltipRender(
+              row[cell.key],
+              row,
+              tableData,
+              cell.key,
+              rowIndex
+            )}
+          </span>
+        </div>
+      );
+    } else {
       return row[cell.key];
     }
-  }
+  };
 
   const ChangePage = (count) => {
     setCurrentPage(currentPage + count);
-  }
+  };
 
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
@@ -111,67 +147,93 @@ function Versatiletable({
             key={`${header.key}-${headerIndex}`}
             style={headerStyles(header)}
           >
-            {
-              (subComponents.HeaderCellComponent
-                ? <subComponents.HeaderCellComponent headerRender={header.headerRender} sortField={sortField} sortOrder={sortOrder} headerKey={header.key} />
-                : <>
-                  {header.headerRender}
-                  {sortField && (
-                    <span>
-                      <img
-                        className="sort-up-icon"
-                        src={chevronUpIcon}
-                        alt="chevron-up"
-                        style={
-                          header.key === sortField && sortOrder === SORTING_TYPES.DESCENDING
-                            ? { opacity: 1 }
-                            : { opacity: 0.2 }
-                        }
-                      />
-                      <img
-                        className="sort-down-icon"
-                        src={chevronDownIcon}
-                        alt="chevron-down"
-                        style={
-                          header.key === sortField && sortOrder === SORTING_TYPES.ASCENDING
-                            ? { opacity: 1 }
-                            : { opacity: 0.2 }
-                        }
-                      />
-                    </span>
-                  )}
-                </>
-              )
-            }
+            {subComponents.HeaderCellComponent ? (
+              <subComponents.HeaderCellComponent
+                headerRender={header.headerRender}
+                sortField={sortField}
+                sortOrder={sortOrder}
+                headerKey={header.key}
+              />
+            ) : (
+              <>
+                {header.headerRender}
+                {sortField && (
+                  <span>
+                    <img
+                      className="sort-up-icon"
+                      src={chevronUpIcon}
+                      alt="chevron-up"
+                      style={
+                        header.key === sortField &&
+                        sortOrder === SORTING_TYPES.DESCENDING
+                          ? { opacity: 1 }
+                          : { opacity: 0.2 }
+                      }
+                    />
+                    <img
+                      className="sort-down-icon"
+                      src={chevronDownIcon}
+                      alt="chevron-down"
+                      style={
+                        header.key === sortField &&
+                        sortOrder === SORTING_TYPES.ASCENDING
+                          ? { opacity: 1 }
+                          : { opacity: 0.2 }
+                      }
+                    />
+                  </span>
+                )}
+              </>
+            )}
           </div>
         ))}
       </div>
 
-      {tableData.filter((row, rowIndex) => (rowIndex >= (currentPage - 1) * defaultPageSize) && rowIndex <= (currentPage * defaultPageSize) - 1).map((row, rowIndex) => (
-        <div className="vt-body-row" key={`row-${rowIndex}`}>
-          {columns.map((cell, cellIndex) => (
-            <div
-              className="vt-body-col"
-              key={`${cell.key}-${cellIndex}`}
-              style={columnStyles(cell)}
-            >
-              {TableCell(cell, row, tableData, rowIndex)}
-            </div>
-          ))}
-        </div>
-      ))}
+      {tableData
+        .filter(
+          (row, rowIndex) =>
+            rowIndex >= (currentPage - 1) * defaultPageSize &&
+            rowIndex <= currentPage * defaultPageSize - 1
+        )
+        .map((row, rowIndex) => (
+          <div className="vt-body-row" key={`row-${rowIndex}`}>
+            {columns.map((cell, cellIndex) => (
+              <div
+                className="vt-body-col"
+                key={`${cell.key}-${cellIndex}`}
+                style={columnStyles(cell)}
+              >
+                {TableCell(cell, row, tableData, rowIndex)}
+              </div>
+            ))}
+          </div>
+        ))}
 
       {(!data || data.length === 0) &&
-        (subComponents.NoRecordComponent
-          ? <subComponents.NoRecordComponent />
-          : <NoRecordComponent />)
-      }
+        (subComponents.NoRecordComponent ? (
+          <subComponents.NoRecordComponent />
+        ) : (
+          <NoRecordComponent />
+        ))}
 
-      {isPagination && tableData && tableData.length > 0 &&
-        (subComponents.PaginationComponent
-          ? <subComponents.PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage} />
-          : <PaginationComponent defaultPageSize={defaultPageSize} currentPage={currentPage} totalSize={tableData.length} ChangePage={ChangePage} />)
-      }
+      {isPagination &&
+        tableData &&
+        tableData.length > 0 &&
+        (subComponents.PaginationComponent ? (
+          <subComponents.PaginationComponent
+            defaultPageSize={defaultPageSize}
+            currentPage={currentPage}
+            totalSize={tableData.length}
+            ChangePage={ChangePage}
+          />
+        ) : (
+          <PaginationComponent
+            defaultPageSize={defaultPageSize}
+            currentPage={currentPage}
+            totalSize={tableData.length}
+            ChangePage={ChangePage}
+          />
+        ))}
     </div>
   );
 }
