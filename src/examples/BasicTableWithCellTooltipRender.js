@@ -6,7 +6,7 @@ import SampleData3 from "./SampleData3";
 function BasicTableWithCellTooltipRender() {
   return (
     <>
-      <h3>Basic Table with Header Tooltip Render</h3>
+      <h3>Basic Table with Cell Tooltip Render</h3>
       <Versatiletable
         data={SampleData3}
         columns={[
