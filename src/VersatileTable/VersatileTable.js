@@ -40,7 +40,7 @@ const getClassNames = (classes) => {
   if (classes) {
     return `vt-table ${classes}`;
   }
-  return "vt-table-basic";
+  return "vt-table";
 };
 
 function Versatiletable({
