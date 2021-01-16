@@ -1,47 +1,8 @@
-import React, { useState, useEffect } from "react";
-import chevronUpIcon from "./assets/icons/chevron-up.svg";
-import chevronDownIcon from "./assets/icons/chevron-down.svg";
+import React from "react";
 import "./VersatileTable.scss";
-import Sorting from "./utils/sorting";
-import { SORTING_TYPES } from "./utils/enums";
-import NoRecordComponent from "./components/Body/NoRecordComponent/NoRecordComponent";
-import PaginationComponent from "./components/Footer/PaginationComponent/PaginationComponent";
-import TableCellComponent from "./components/Body/TableCellComponent/TableCellComponent";
-import HeaderTooltipComponent from "./components/Header/HeaderTooltipComponent/HeaderTooltipComponent";
-
-const tableStyles = (styleProp) => {
-  if (styleProp) {
-    return {
-      width: styleProp.width ? styleProp.width : "auto",
-      height: styleProp.height ? styleProp.height : "auto",
-      maxWidth: styleProp.maxWidth ? styleProp.maxWidth : "fit-content",
-      ...styleProp,
-    };
-  }
-
-  return {};
-};
-
-const headerStyles = (styleProp) => {
-  return {
-    width: styleProp.width ? styleProp.width : "200px",
-    ...styleProp.headerStyle,
-  };
-};
-
-const columnStyles = (styleProp) => {
-  return {
-    width: styleProp.width ? styleProp.width : "200px",
-    ...styleProp.columnStyle,
-  };
-};
-
-const getClassNames = (classes) => {
-  if (classes) {
-    return `vt-table ${classes}`;
-  }
-  return "vt-table";
-};
+import Header from "./components/Header/Header";
+import Body from "./components/Body/Body";
+import Footer from "./components/Footer/Footer";
 
 function Versatiletable({
   data = [],
@@ -51,144 +12,42 @@ function Versatiletable({
   options = {},
   subComponents = {},
 }) {
-  const [sortOrder, setSortOrder] = useState(
-    options && options.defaultSort && options.defaultSort.sortOrder
-      ? options.defaultSort.sortOrder
-      : "asc"
-  );
-  const [sortField, setSortField] = useState(
-    options && options.defaultSort && options.defaultSort.sortField
-      ? options.defaultSort.sortField
-      : null
-  );
-  const [sortType, setSortType] = useState(
-    options && options.defaultSort && options.defaultSort.sortType
-      ? options.defaultSort.sortType
-      : "string"
-  );
-
-  const [defaultPageSize, setDefaultPageSize] = useState(
-    options && options.pagination && options.pagination.defaultPageSize
-      ? options.pagination.defaultPageSize
-      : 10
-  );
-
-  const [isPagination, setIsPagination] = useState(
-    options && options.pagination ? true : false
-  );
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [tableData, setTableData] = useState([]);
-
-  useEffect(() => {
-    let newData = [...data];
-    if (sortOrder && sortField) {
-      Sorting(sortType, newData, sortField, sortOrder);
+  const tableStyles = (styleProp) => {
+    if (styleProp) {
+      return {
+        width: styleProp.width ? styleProp.width : "auto",
+        height: styleProp.height ? styleProp.height : "auto",
+        maxWidth: styleProp.maxWidth ? styleProp.maxWidth : "fit-content",
+        ...styleProp,
+      };
     }
-    setTableData(newData);
-  }, [data, sortField, sortOrder, sortType]);
 
-  const ChangePage = (count) => {
-    setCurrentPage(currentPage + count);
+    return {};
+  };
+
+  const getClassNames = (classes) => {
+    if (classes) {
+      return `vt-table ${classes}`;
+    }
+    return "vt-table";
   };
 
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
-      <div className="vt-header-row">
-        {columns.map((header, headerIndex) => (
-          <div
-            className="vt-header-col"
-            key={`${header.key}-${headerIndex}`}
-            style={headerStyles(header)}
-          >
-            {subComponents.HeaderCellComponent ? (
-              <subComponents.HeaderCellComponent
-                headerRender={header.headerRender}
-                sortField={sortField}
-                sortOrder={sortOrder}
-                headerKey={header.key}
-              />
-            ) : (
-              <>
-                <HeaderTooltipComponent header={header} headerIndex={headerIndex} />
-                {sortField && (
-                  <span>
-                    <img
-                      className="sort-up-icon"
-                      src={chevronUpIcon}
-                      alt="chevron-up"
-                      style={
-                        header.key === sortField &&
-                        sortOrder === SORTING_TYPES.DESCENDING
-                          ? { opacity: 1 }
-                          : { opacity: 0.2 }
-                      }
-                    />
-                    <img
-                      className="sort-down-icon"
-                      src={chevronDownIcon}
-                      alt="chevron-down"
-                      style={
-                        header.key === sortField &&
-                        sortOrder === SORTING_TYPES.ASCENDING
-                          ? { opacity: 1 }
-                          : { opacity: 0.2 }
-                      }
-                    />
-                  </span>
-                )}
-              </>
-            )}
-          </div>
-        ))}
-      </div>
+      <Header
+        columns={columns}
+        options={options}
+        subComponents={subComponents}
+      />
 
-      {tableData
-        .filter(
-          (row, rowIndex) =>
-            rowIndex >= (currentPage - 1) * defaultPageSize &&
-            rowIndex <= currentPage * defaultPageSize - 1
-        )
-        .map((row, rowIndex) => (
-          <div className="vt-body-row" key={`row-${rowIndex}`}>
-            {columns.map((cell, cellIndex) => (
-              <div
-                className="vt-body-col"
-                key={`${cell.key}-${cellIndex}`}
-                style={columnStyles(cell)}
-              >
-                <TableCellComponent cell={cell} row={row} tableData={tableData} rowIndex={rowIndex} />
-              </div>
-            ))}
-          </div>
-        ))}
+      <Body
+        data={data}
+        columns={columns}
+        options={options}
+        subComponents={subComponents}
+      />
 
-      {(!data || data.length === 0) &&
-        (subComponents.NoRecordComponent ? (
-          <subComponents.NoRecordComponent />
-        ) : (
-          <NoRecordComponent />
-        ))}
-
-      {isPagination &&
-        tableData &&
-        tableData.length > 0 &&
-        (subComponents.PaginationComponent ? (
-          <subComponents.PaginationComponent
-            defaultPageSize={defaultPageSize}
-            currentPage={currentPage}
-            totalSize={tableData.length}
-            ChangePage={ChangePage}
-          />
-        ) : (
-          <PaginationComponent
-            defaultPageSize={defaultPageSize}
-            currentPage={currentPage}
-            totalSize={tableData.length}
-            ChangePage={ChangePage}
-          />
-        ))}
+      <Footer data={data} options={options} subComponents={subComponents} />
     </div>
   );
 }
