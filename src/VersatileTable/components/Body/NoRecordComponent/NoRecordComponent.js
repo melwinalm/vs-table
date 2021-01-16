@@ -4,7 +4,7 @@ import "./NoRecordComponent.scss";
 
 function NoRecordComponent() {
   return (
-    <div className="vt-body-col no-record">{___("No Records Found.")}</div>
+    <div className="vt-body-col vt-no-record">{___("No Records Found.")}</div>
   );
 }
 
