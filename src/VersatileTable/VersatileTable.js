@@ -3,6 +3,8 @@ import "./VersatileTable.scss";
 import Header from "./components/Header/Header";
 import Body from "./components/Body/Body";
 import Footer from "./components/Footer/Footer";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import { rootPropTypesObject } from "./utils/propTypesValidator";
 
 function Versatiletable({
   data = [],
@@ -34,22 +36,26 @@ function Versatiletable({
 
   return (
     <div className={getClassNames(className)} style={tableStyles(style)}>
-      <Header
-        columns={columns}
-        options={options}
-        subComponents={subComponents}
-      />
+      <ErrorBoundary>
+        <Header
+          columns={columns}
+          options={options}
+          subComponents={subComponents}
+        />
 
-      <Body
-        data={data}
-        columns={columns}
-        options={options}
-        subComponents={subComponents}
-      />
+        <Body
+          data={data}
+          columns={columns}
+          options={options}
+          subComponents={subComponents}
+        />
 
-      <Footer data={data} options={options} subComponents={subComponents} />
+        <Footer data={data} options={options} subComponents={subComponents} />
+      </ErrorBoundary>
     </div>
   );
 }
+
+Versatiletable.propTypes = rootPropTypesObject;
 
 export default Versatiletable;
