@@ -1,8 +1,8 @@
-import React from "react";
-import Versatiletable from "./../VersatileTable";
+import React from 'react';
+import Versatiletable from './../VersatileTable';
 
 function CustomRecordMessageComponent() {
-  return <div style={{ textAlign: "center" }}>Nothing here.</div>;
+  return <div style={{ textAlign: 'center' }}>Nothing here.</div>;
 }
 
 function TableWithCustomNoRecordsMessage() {
@@ -14,9 +14,9 @@ function TableWithCustomNoRecordsMessage() {
         data={[]}
         options={{
           defaultSort: {
-            sortField: "id",
-            sortOrder: "desc",
-            sortType: "number",
+            sortField: 'id',
+            sortOrder: 'desc',
+            sortType: 'number',
           },
         }}
         subComponents={{
@@ -24,46 +24,46 @@ function TableWithCustomNoRecordsMessage() {
         }}
         columns={[
           {
-            key: "id",
-            headerRender: "ID",
+            key: 'id',
+            headerRender: 'ID',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "300px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '300px',
             headerStyle: {
-              fontWeight: "bold",
-              borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              fontWeight: 'bold',
+              borderLeft: '1px solid rgba(32, 33, 36, .28)',
             },
             columnStyle: {
-              borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              borderLeft: '1px solid rgba(32, 33, 36, .28)',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "300px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '300px',
             headerStyle: {
-              fontWeight: "bold",
-              borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              fontWeight: 'bold',
+              borderLeft: '1px solid rgba(32, 33, 36, .28)',
             },
             columnStyle: {
-              borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              borderLeft: '1px solid rgba(32, 33, 36, .28)',
             },
           },
           {
-            key: "gender",
-            headerRender: "Gender",
-            width: "150px",
+            key: 'gender',
+            headerRender: 'Gender',
+            width: '150px',
             headerStyle: {
-              fontWeight: "bold",
-              borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              fontWeight: 'bold',
+              borderLeft: '1px solid rgba(32, 33, 36, .28)',
             },
             columnStyle: {
-              borderLeft: "1px solid rgba(32, 33, 36, .28)",
+              borderLeft: '1px solid rgba(32, 33, 36, .28)',
             },
           },
         ]}

@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import HeaderTooltipComponent from "./HeaderTooltipComponent/HeaderTooltipComponent";
-import SortIconComponent from "./SortIconComponent/SortIconComponent";
-import "./Header.scss";
+import React, { useState } from 'react';
+import HeaderTooltipComponent from './HeaderTooltipComponent/HeaderTooltipComponent';
+import SortIconComponent from './SortIconComponent/SortIconComponent';
+import './Header.scss';
 
-function Header({
-  columns = [],
-  options = {},
-  subComponents = {},
-}) {
-
+function Header({ columns = [], options = {}, subComponents = {} }) {
   const [sortOrder, setSortOrder] = useState(
     options && options.defaultSort && options.defaultSort.sortOrder
       ? options.defaultSort.sortOrder
-      : "asc"
+      : 'asc'
   );
   const [sortField, setSortField] = useState(
     options && options.defaultSort && options.defaultSort.sortField
@@ -22,7 +17,7 @@ function Header({
 
   const headerStyles = (styleProp) => {
     return {
-      width: styleProp.width ? styleProp.width : "200px",
+      width: styleProp.width ? styleProp.width : '200px',
       ...styleProp.headerStyle,
     };
   };

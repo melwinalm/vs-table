@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import "./HeaderTooltipComponent.scss";
+import React, { useState } from 'react';
+import { TOOLTIP_POSITIONS } from '../../../utils/enums';
+import './HeaderTooltipComponent.scss';
 
 function HeaderTooltipComponent({ header }) {
   const [tooltipPosition, setTooltipPosition] = useState(
-    header.headerTooltipPosition ? header.headerTooltipPosition : "right"
+    header.headerTooltipPosition
+      ? header.headerTooltipPosition
+      : TOOLTIP_POSITIONS.RIGHT
   );
 
   const [tooltipClasses, setTooltipClasses] = useState(
@@ -13,7 +16,7 @@ function HeaderTooltipComponent({ header }) {
   if (
     header &&
     header.headerTooltipRender &&
-    typeof header.headerTooltipRender === "boolean"
+    typeof header.headerTooltipRender === 'boolean'
   ) {
     return (
       <div className="vt-tooltip">
@@ -24,7 +27,7 @@ function HeaderTooltipComponent({ header }) {
   } else if (
     header &&
     header.headerTooltipRender &&
-    typeof header.headerTooltipRender === "function"
+    typeof header.headerTooltipRender === 'function'
   ) {
     return (
       <div className="vt-tooltip">

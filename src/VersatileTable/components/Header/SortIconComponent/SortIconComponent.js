@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import chevronUpIcon from "../../../assets/icons/chevron-up.svg";
-import chevronDownIcon from "../../../assets/icons/chevron-down.svg";
-import { SORTING_TYPES } from "../../../utils/enums";
-import "./SortIconComponent.scss";
+import React, { useState } from 'react';
+import chevronUpIcon from '../../../assets/icons/chevron-up.svg';
+import chevronDownIcon from '../../../assets/icons/chevron-down.svg';
+import { SORTING_TYPES } from '../../../utils/enums';
+import './SortIconComponent.scss';
 
 function SortIconComponent({ header, options }) {
   const [sortOrder, setSortOrder] = useState(
     options && options.defaultSort && options.defaultSort.sortOrder
       ? options.defaultSort.sortOrder
-      : "asc"
+      : 'asc'
   );
 
   const [sortField, setSortField] = useState(

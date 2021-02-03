@@ -1,6 +1,6 @@
-import React from "react";
-import Versatiletable from "./../VersatileTable";
-import SampleData2 from "./SampleData2";
+import React from 'react';
+import Versatiletable from './../VersatileTable';
+import SampleData2 from './SampleData2';
 
 function BasicTableWithCellRenderer() {
   return (
@@ -11,33 +11,33 @@ function BasicTableWithCellRenderer() {
         data={SampleData2}
         columns={[
           {
-            key: "id",
-            headerRender: "ID",
+            key: 'id',
+            headerRender: 'ID',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "300px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '300px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "300px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '300px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "gender",
-            headerRender: "Gender",
-            width: "150px",
-            cellRender: (val) => (val === "Male" ? "M" : "F"),
+            key: 'gender',
+            headerRender: 'Gender',
+            width: '150px',
+            cellRender: (val) => (val === 'Male' ? 'M' : 'F'),
           },
         ]}
       />

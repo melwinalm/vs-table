@@ -1,7 +1,7 @@
-import React from "react";
-import Versatiletable, { Formatters } from "./../VersatileTable";
+import React from 'react';
+import Versatiletable, { Formatters } from './../VersatileTable';
 
-import SampleData3 from "./SampleData3";
+import SampleData3 from './SampleData3';
 
 function BasicTable() {
   return (
@@ -11,29 +11,29 @@ function BasicTable() {
         data={SampleData3}
         columns={[
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "100px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "100px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "salary",
-            headerRender: "Salary",
-            width: "100px",
+            key: 'salary',
+            headerRender: 'Salary',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
-            cellRender: (val) => new Formatters(val).Currency("₹").value,
+            cellRender: (val) => new Formatters(val).Currency('₹').value,
           },
         ]}
       />

@@ -1,10 +1,29 @@
-## Versatile Table
+# Versatile Table
 
 Highly customizable table library build on react.
 
-### Documentation
+## Quick Features
 
-#### List of Props:
+- Customizable UI
+- Custom Cell and Header Rendering
+- Resizable (column width)
+- Tooltip
+- Pagination
+- Loader
+- Sorting
+- Data Formatters (Value truncator, Currency value formatter, etc.)
+- Custom Data Formatters
+- Customizable No-Records message
+
+## Table of Content
+
+- [Documentation](https://github.com/melwinalm/versatile-table/tree/develop#documentation)
+- [Quick Start](https://github.com/melwinalm/versatile-table/tree/develop#quick-start)
+- [Contributors Guide](https://github.com/melwinalm/versatile-table/tree/develop#contributors-guide)
+
+## Documentation
+
+### List of Props
 
 - **className** - `string`
 - **style** - `object`
@@ -14,7 +33,7 @@ Highly customizable table library build on react.
   ```javascript
   style: {
     {
-      width: "100%";
+      width: '100%'
     }
   }
   ```
@@ -32,7 +51,7 @@ Highly customizable table library build on react.
     Example:
 
     ```javascript
-    headerRender: "First Name";
+    headerRender: 'First Name'
     ```
 
   - **width** - `string`
@@ -42,7 +61,7 @@ Highly customizable table library build on react.
     Example:
 
     ```javascript
-    width: "200px";
+    width: '200px'
     ```
 
   - **headerStyle** - `object`
@@ -94,13 +113,13 @@ Highly customizable table library build on react.
     Example:
 
     ```javascript
-    cellRender: (val) => (val === "Male" ? "M" : "F");
+    cellRender: (val) => (val === 'Male' ? 'M' : 'F')
 
     // or
 
     cellRender: (val) => {
-      return <MyCustomCellComponent value={val} />;
-    };
+      return <MyCustomCellComponent value={val} />
+    }
     ```
 
   - **cellTooltipRender** - `boolean` or `function` or `component`
@@ -110,15 +129,15 @@ Highly customizable table library build on react.
     You can enable default tooltip on cell.
 
     ```javascript
-    cellTooltipRender: true;
+    cellTooltipRender: true
     ```
 
     You can define a custom tooltip component.
 
     ```javascript
     cellTooltipRender: (val, rowData, data, columnKey, index) => {
-      return <div>This is a custom tooltip</div>;
-    };
+      return <div>This is a custom tooltip</div>
+    }
     ```
 
   - **cellTooltipPosition** - `string`
@@ -128,7 +147,7 @@ Highly customizable table library build on react.
     Example:
 
     ```javascript
-    cellTooltipPosition: "top";
+    cellTooltipPosition: 'top'
     ```
 
   - **headerTooltipRender** - `boolean` or `function` or `component`
@@ -138,15 +157,15 @@ Highly customizable table library build on react.
     You can enable default tooltip on cell.
 
     ```javascript
-    headerTooltipRender: true;
+    headerTooltipRender: true
     ```
 
     You can define a custom tooltip component.
 
     ```javascript
     headerTooltipRender: (val) => {
-      return <div>This is a custom tooltip</div>;
-    };
+      return <div>This is a custom tooltip</div>
+    }
     ```
 
   - **headerTooltipPosition** - `string`
@@ -156,7 +175,7 @@ Highly customizable table library build on react.
     Example:
 
     ```javascript
-    headerTooltipPosition: "top";
+    headerTooltipPosition: 'top'
     ```
 
 - **data** - `array` _(required)_
@@ -171,7 +190,7 @@ Highly customizable table library build on react.
       The field name which you want to sort.
 
       ```javascript
-      sortField: "first_name";
+      sortField: 'first_name'
       ```
 
     - **sortOrder** - `string`
@@ -179,7 +198,7 @@ Highly customizable table library build on react.
       Order of the sort - `asc` for ascending and `desc` for descending. Default value is `asc`.
 
       ```javascript
-      sortOrder: "desc";
+      sortOrder: 'desc'
       ```
 
     - **sortType** - `string`
@@ -187,7 +206,7 @@ Highly customizable table library build on react.
       Define the type of sort. Column value will be sorted based on the type (`string`, `number` or `date`). Default value is `string`.
 
       ```javascript
-      sortOrder: "string";
+      sortOrder: 'string'
       ```
 
   - **defaultLoader** - `object or boolean`
@@ -195,7 +214,7 @@ Highly customizable table library build on react.
     To enable the default loader. `defaultLoader` can be enabled by passing in the boolean value (`true`) or by defining any object with the below properties. By default loader is disabled.
 
     ```javascript
-    defaultLoader: true;
+    defaultLoader: true
 
     // or
 
@@ -211,7 +230,7 @@ Highly customizable table library build on react.
 
       ```javascript
       defaultLoader: {
-        loaderTimeout: 5000;
+        loaderTimeout: 5000
       }
       ```
 
@@ -258,3 +277,25 @@ Highly customizable table library build on react.
       LoaderComponent: CustomLoaderComponent
     }}
     ```
+
+## Contributors Guide
+
+- Base development branch - `develop`.
+
+- If you are new contributor, Firstly create a copy of `develop` branch for your development purpose.
+
+- Do not commit any changes directly to `develop` and `master` branch.
+
+- Always raise a PR for the new changes to `develop` branch and also add reviewer.
+
+- Always pull the latest code (`git pull origin develop`) and run `npm i` before starting the your development work.
+
+- Before committing the code, make sure no lint error are present in your code and also run `npm run format` to beautify the code.
+
+### Quick Start
+
+- Run `npm i` to install dependencies.
+
+- Run `npm run start` to start the application.
+
+- Application can be accessed on port 3000 - `http://localhost:3000/`

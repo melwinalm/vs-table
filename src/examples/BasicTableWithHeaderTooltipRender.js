@@ -1,7 +1,7 @@
-import React from "react";
-import Versatiletable from "./../VersatileTable";
+import React from 'react';
+import Versatiletable from './../VersatileTable';
 
-import SampleData3 from "./SampleData3";
+import SampleData3 from './SampleData3';
 
 function BasicTableWithHeaderTooltipRender() {
   return (
@@ -11,29 +11,29 @@ function BasicTableWithHeaderTooltipRender() {
         data={SampleData3}
         columns={[
           {
-            key: "first_name",
-            headerRender: "First Name",
+            key: 'first_name',
+            headerRender: 'First Name',
             headerTooltipRender: true,
-            headerTooltipPosition: "top",
-            width: "100px",
+            headerTooltipPosition: 'top',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
+            key: 'last_name',
+            headerRender: 'Last Name',
             headerTooltipRender: true,
-            headerTooltipPosition: "bottom",
-            width: "100px",
+            headerTooltipPosition: 'bottom',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "salary",
-            headerRender: "Salary",
-            headerTooltipPosition: "left",
+            key: 'salary',
+            headerRender: 'Salary',
+            headerTooltipPosition: 'left',
             headerTooltipRender: (val) => {
               return (
                 <div>
@@ -42,9 +42,9 @@ function BasicTableWithHeaderTooltipRender() {
                 </div>
               );
             },
-            width: "100px",
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
         ]}

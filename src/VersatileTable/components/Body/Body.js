@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Sorting from "../../utils/sorting";
-import NoRecordComponent from "./NoRecordComponent/NoRecordComponent";
-import TableCellComponent from "./TableCellComponent/TableCellComponent";
-import "./Body.scss";
+import React, { useState, useEffect } from 'react';
+import Sorting from '../../utils/sorting';
+import NoRecordComponent from './NoRecordComponent/NoRecordComponent';
+import TableCellComponent from './TableCellComponent/TableCellComponent';
+import './Body.scss';
 
 function Body({ data = [], columns = [], options = {}, subComponents = {} }) {
   const [sortOrder, setSortOrder] = useState(
     options && options.defaultSort && options.defaultSort.sortOrder
       ? options.defaultSort.sortOrder
-      : "asc"
+      : 'asc'
   );
   const [sortField, setSortField] = useState(
     options && options.defaultSort && options.defaultSort.sortField
@@ -18,7 +18,7 @@ function Body({ data = [], columns = [], options = {}, subComponents = {} }) {
   const [sortType, setSortType] = useState(
     options && options.defaultSort && options.defaultSort.sortType
       ? options.defaultSort.sortType
-      : "string"
+      : 'string'
   );
 
   const [defaultPageSize, setDefaultPageSize] = useState(
@@ -41,7 +41,7 @@ function Body({ data = [], columns = [], options = {}, subComponents = {} }) {
 
   const columnStyles = (styleProp) => {
     return {
-      width: styleProp.width ? styleProp.width : "200px",
+      width: styleProp.width ? styleProp.width : '200px',
       ...styleProp.columnStyle,
     };
   };

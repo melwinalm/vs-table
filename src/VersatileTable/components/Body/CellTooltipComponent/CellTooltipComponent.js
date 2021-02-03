@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import "./CellTooltipComponent.scss";
+import React, { useState } from 'react';
+import { TOOLTIP_POSITIONS } from '../../../utils/enums';
+import './CellTooltipComponent.scss';
 
 function CellTooltipComponent({ row, cell, tableData, rowIndex }) {
   const [tooltipPosition, setTooltipPosition] = useState(
-    cell.cellTooltipPosition ? cell.cellTooltipPosition : "right"
+    cell.cellTooltipPosition
+      ? cell.cellTooltipPosition
+      : TOOLTIP_POSITIONS.RIGHT
   );
 
-  const [tooltipClasses, setTooltipClasses] = useState(`vt-tooltip-content vt-tooltip-${tooltipPosition}`);
+  const [tooltipClasses, setTooltipClasses] = useState(
+    `vt-tooltip-content vt-tooltip-${tooltipPosition}`
+  );
 
   if (
     cell &&
     cell.cellTooltipRender &&
-    typeof cell.cellTooltipRender === "boolean"
+    typeof cell.cellTooltipRender === 'boolean'
   ) {
     return (
       <div className="vt-tooltip">
@@ -22,7 +27,7 @@ function CellTooltipComponent({ row, cell, tableData, rowIndex }) {
   } else if (
     cell &&
     cell.cellTooltipRender &&
-    typeof cell.cellTooltipRender === "function"
+    typeof cell.cellTooltipRender === 'function'
   ) {
     return (
       <div className="vt-tooltip">

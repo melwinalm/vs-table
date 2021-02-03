@@ -1,5 +1,5 @@
-import React from "react";
-import "./ErrorBoundary.scss";
+import React from 'react';
+import './ErrorBoundary.scss';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,16 +12,14 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error) {
-    console.error("Error Boundary (error):", error);
+    console.error('Error Boundary (error):', error);
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="vt-error-boundary">
-          Oops! Something went wrong
-        </div>
-      )
+        <div className="vt-error-boundary">Oops! Something went wrong</div>
+      );
     }
 
     return this.props.children;

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import NoRecordMsgComponent from "./NoRecordMsgComponent/NoRecordMsgComponent";
-import LoaderComponent from "./LoaderComponent/LoaderComponent";
+import React, { useEffect, useState } from 'react';
+import NoRecordMsgComponent from './NoRecordMsgComponent/NoRecordMsgComponent';
+import LoaderComponent from './LoaderComponent/LoaderComponent';
 
 function NoRecordComponent({ data = [], options = {}, subComponents = {} }) {
   const [tableData, setTableData] = useState(data);
@@ -24,7 +24,7 @@ function NoRecordComponent({ data = [], options = {}, subComponents = {} }) {
     } else {
       setTableData(tableData);
     }
-  }, [tableData, isLoading]);
+  }, [tableData, isLoading, loaderTimeout]);
 
   if (!tableData || tableData.length === 0) {
     if (isLoading) {

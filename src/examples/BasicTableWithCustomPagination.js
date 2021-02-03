@@ -1,6 +1,6 @@
-import React from "react";
-import Versatiletable from "./../VersatileTable";
-import SampleData1 from "./SampleData1";
+import React from 'react';
+import Versatiletable from './../VersatileTable';
+import SampleData1 from './SampleData1';
 
 function CustomPagination({
   defaultPageSize,
@@ -43,67 +43,67 @@ function BasicTableWithPagination() {
         }}
         columns={[
           {
-            key: "id",
-            headerRender: "ID",
-            width: "50px",
+            key: 'id',
+            headerRender: 'ID',
+            width: '50px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "100px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "100px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "gender",
-            headerRender: "Gender",
-            width: "100px",
+            key: 'gender',
+            headerRender: 'Gender',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "email",
-            headerRender: "Email ID",
-            width: "200px",
+            key: 'email',
+            headerRender: 'Email ID',
+            width: '200px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "phone",
-            headerRender: "Phone",
-            width: "150px",
+            key: 'phone',
+            headerRender: 'Phone',
+            width: '150px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "salary",
-            headerRender: "Salary",
-            width: "100px",
+            key: 'salary',
+            headerRender: 'Salary',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "date_of_joining",
-            headerRender: "DoJ",
-            width: "100px",
+            key: 'date_of_joining',
+            headerRender: 'DoJ',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
         ]}

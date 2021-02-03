@@ -1,4 +1,4 @@
-import { SORTING_TYPES, SORTING_DATA_TYPES } from "./enums";
+import { SORTING_TYPES, SORTING_DATA_TYPES } from './enums';
 
 const Sorting = (sortType, data, sortField, sortOrder) => {
   switch (sortType) {

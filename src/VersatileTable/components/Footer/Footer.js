@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Sorting from "../../utils/sorting";
-import PaginationComponent from "./PaginationComponent/PaginationComponent";
+import React, { useState, useEffect } from 'react';
+import Sorting from '../../utils/sorting';
+import PaginationComponent from './PaginationComponent/PaginationComponent';
 
-function Footer({
-  data = [],
-  options = {},
-  subComponents = {},
-}) {
-
+function Footer({ data = [], options = {}, subComponents = {} }) {
   const [sortOrder, setSortOrder] = useState(
     options && options.defaultSort && options.defaultSort.sortOrder
       ? options.defaultSort.sortOrder
-      : "asc"
+      : 'asc'
   );
   const [sortField, setSortField] = useState(
     options && options.defaultSort && options.defaultSort.sortField
@@ -21,7 +16,7 @@ function Footer({
   const [sortType, setSortType] = useState(
     options && options.defaultSort && options.defaultSort.sortType
       ? options.defaultSort.sortType
-      : "string"
+      : 'string'
   );
 
   const [defaultPageSize, setDefaultPageSize] = useState(

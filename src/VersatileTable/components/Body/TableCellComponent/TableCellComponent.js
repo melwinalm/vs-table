@@ -1,6 +1,6 @@
-import React from "react";
-import CellTooltipComponent from "../CellTooltipComponent/CellTooltipComponent";
-import "./TableCellComponent.scss";
+import React from 'react';
+import CellTooltipComponent from '../CellTooltipComponent/CellTooltipComponent';
+import './TableCellComponent.scss';
 
 function TableCell({ cell, row, tableData, rowIndex }) {
   if (cell && cell.cellRender) {

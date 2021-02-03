@@ -1,6 +1,6 @@
-import React from "react";
-import Versatiletable, { Formatters } from "./../VersatileTable";
-import SampleData1 from "./SampleData1";
+import React from 'react';
+import Versatiletable, { Formatters } from './../VersatileTable';
+import SampleData1 from './SampleData1';
 
 function TableWithTruncateCell() {
   return (
@@ -10,68 +10,68 @@ function TableWithTruncateCell() {
         data={SampleData1}
         columns={[
           {
-            key: "id",
-            headerRender: "ID",
-            width: "50px",
+            key: 'id',
+            headerRender: 'ID',
+            width: '50px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "100px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "100px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "gender",
-            headerRender: "Gender",
-            width: "100px",
+            key: 'gender',
+            headerRender: 'Gender',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "email",
-            headerRender: "Email ID",
-            width: "200px",
+            key: 'email',
+            headerRender: 'Email ID',
+            width: '200px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
-            cellRender: (val) => new Formatters(val).Truncate(10, "...").value,
+            cellRender: (val) => new Formatters(val).Truncate(10, '...').value,
           },
           {
-            key: "phone",
-            headerRender: "Phone",
-            width: "150px",
+            key: 'phone',
+            headerRender: 'Phone',
+            width: '150px',
             headerStyle: {
-              fontWeight: "bold",
-            },
-          },
-          {
-            key: "salary",
-            headerRender: "Salary",
-            width: "100px",
-            headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "date_of_joining",
-            headerRender: "DoJ",
-            width: "100px",
+            key: 'salary',
+            headerRender: 'Salary',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
+            },
+          },
+          {
+            key: 'date_of_joining',
+            headerRender: 'DoJ',
+            width: '100px',
+            headerStyle: {
+              fontWeight: 'bold',
             },
           },
         ]}
