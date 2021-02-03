@@ -2,18 +2,23 @@ import React from 'react';
 import Versatiletable from './../VersatileTable';
 import SampleData1 from './SampleData1';
 
-function CustomHeaderCellComponent({ headerRender, headerKey, sortField, sortOrder }) {
+function CustomHeaderCellComponent({
+  headerRender,
+  headerKey,
+  sortField,
+  sortOrder,
+}) {
   return (
     <>
       {headerRender}
       {sortField && (
         <span>
-          {headerKey === sortField && sortOrder === "desc" && " (desc)"}
-          {headerKey === sortField && sortOrder === "asc" && " (asc)"}
+          {headerKey === sortField && sortOrder === 'desc' && ' (desc)'}
+          {headerKey === sortField && sortOrder === 'asc' && ' (asc)'}
         </span>
       )}
     </>
-  )
+  );
 }
 
 function BasicTableWithCustomHeaderCell() {
@@ -24,83 +29,83 @@ function BasicTableWithCustomHeaderCell() {
         data={SampleData1}
         options={{
           defaultSort: {
-            sortField: "date_of_joining",
-            sortOrder: "asc",
-            sortType: "date",
+            sortField: 'date_of_joining',
+            sortOrder: 'asc',
+            sortType: 'date',
           },
         }}
         subComponents={{
-          HeaderCellComponent: CustomHeaderCellComponent
+          HeaderCellComponent: CustomHeaderCellComponent,
         }}
         columns={[
           {
-            key: "id",
-            headerRender: "ID",
-            width: "50px",
+            key: 'id',
+            headerRender: 'ID',
+            width: '50px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "100px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "100px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "gender",
-            headerRender: "Gender",
-            width: "100px",
+            key: 'gender',
+            headerRender: 'Gender',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "email",
-            headerRender: "Email ID",
-            width: "200px",
+            key: 'email',
+            headerRender: 'Email ID',
+            width: '200px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "phone",
-            headerRender: "Phone",
-            width: "150px",
+            key: 'phone',
+            headerRender: 'Phone',
+            width: '150px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "salary",
-            headerRender: "Salary",
-            width: "100px",
+            key: 'salary',
+            headerRender: 'Salary',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "date_of_joining",
-            headerRender: "DoJ",
-            width: "100px",
+            key: 'date_of_joining',
+            headerRender: 'DoJ',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
         ]}
       />
     </>
-  )
+  );
 }
 
 export default BasicTableWithCustomHeaderCell;

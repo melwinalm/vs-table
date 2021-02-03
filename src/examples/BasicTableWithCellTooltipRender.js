@@ -1,7 +1,7 @@
-import React from "react";
-import Versatiletable from "./../VersatileTable";
+import React from 'react';
+import Versatiletable from './../VersatileTable';
 
-import SampleData3 from "./SampleData3";
+import SampleData3 from './SampleData3';
 
 function BasicTableWithCellTooltipRender() {
   return (
@@ -11,32 +11,32 @@ function BasicTableWithCellTooltipRender() {
         data={SampleData3}
         columns={[
           {
-            key: "first_name",
-            headerRender: "First Name",
-            headerTooltipRender: "This is the customers first name",
-            width: "100px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            headerTooltipRender: 'This is the customers first name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
-            }
+              fontWeight: 'bold',
+            },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            headerTooltipRender: "This is the customers last name",
-            width: "100px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            headerTooltipRender: 'This is the customers last name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
             cellTooltipRender: true,
-            cellTooltipPosition: "top"
+            cellTooltipPosition: 'top',
           },
           {
-            key: "salary",
-            headerRender: "Salary",
-            headerTooltipRender: "This is the customers salary",
-            width: "100px",
+            key: 'salary',
+            headerRender: 'Salary',
+            headerTooltipRender: 'This is the customers salary',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
             cellTooltipRender: (val) => {
               return (
@@ -46,7 +46,7 @@ function BasicTableWithCellTooltipRender() {
                 </div>
               );
             },
-            cellTooltipPosition: "left"
+            cellTooltipPosition: 'left',
           },
         ]}
       />

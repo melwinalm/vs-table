@@ -1,25 +1,25 @@
-import React from "react";
-import "./VersatileTable.scss";
-import Header from "./components/Header/Header";
-import Body from "./components/Body/Body";
-import Footer from "./components/Footer/Footer";
-import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
-import { rootPropTypesObject } from "./utils/propTypesValidator";
+import React from 'react';
+import './VersatileTable.scss';
+import Header from './components/Header/Header';
+import Body from './components/Body/Body';
+import Footer from './components/Footer/Footer';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import { rootPropTypesObject } from './utils/propTypesValidator';
 
 function Versatiletable({
   data = [],
   columns = [],
   style = {},
-  className = "",
+  className = '',
   options = {},
   subComponents = {},
 }) {
   const tableStyles = (styleProp) => {
     if (styleProp) {
       return {
-        width: styleProp.width ? styleProp.width : "auto",
-        height: styleProp.height ? styleProp.height : "auto",
-        maxWidth: styleProp.maxWidth ? styleProp.maxWidth : "fit-content",
+        width: styleProp.width ? styleProp.width : 'auto',
+        height: styleProp.height ? styleProp.height : 'auto',
+        maxWidth: styleProp.maxWidth ? styleProp.maxWidth : 'fit-content',
         ...styleProp,
       };
     }
@@ -31,7 +31,7 @@ function Versatiletable({
     if (classes) {
       return `vt-table ${classes}`;
     }
-    return "vt-table";
+    return 'vt-table';
   };
 
   return (

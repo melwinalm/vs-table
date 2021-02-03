@@ -1,13 +1,26 @@
-import React from 'react';
-import Versatiletable, { Formatters } from './../VersatileTable';
-import SampleData1 from './SampleData1';
+import React, { useEffect, useState } from 'react';
+import Versatiletable from './../VersatileTable';
+import SampleData from './SampleData1';
 
-function TableWithTruncateCell() {
+function TableWithLoader() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData(SampleData);
+    }, 5000);
+  }, []);
+
   return (
     <>
-      <h3>Table with truncated cell</h3>
+      <h3>Table with Loader</h3>
       <Versatiletable
-        data={SampleData1}
+        data={data}
+        options={{
+          defaultLoader: {
+            loaderTimeout: 5000,
+          },
+        }}
         columns={[
           {
             key: 'id',
@@ -48,7 +61,6 @@ function TableWithTruncateCell() {
             headerStyle: {
               fontWeight: 'bold',
             },
-            cellRender: (val) => new Formatters(val).Truncate(10, '...').value,
           },
           {
             key: 'phone',
@@ -80,4 +92,4 @@ function TableWithTruncateCell() {
   );
 }
 
-export default TableWithTruncateCell;
+export default TableWithLoader;

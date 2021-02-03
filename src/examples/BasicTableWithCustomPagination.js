@@ -2,99 +2,114 @@ import React from 'react';
 import Versatiletable from './../VersatileTable';
 import SampleData1 from './SampleData1';
 
-function CustomPagination({defaultPageSize, currentPage, totalSize, ChangePage }){
-  return(
+function CustomPagination({
+  defaultPageSize,
+  currentPage,
+  totalSize,
+  ChangePage,
+}) {
+  return (
     <div className="vt-pagination">
-      <button onClick={() => ChangePage(-1)} disabled={currentPage <= 1}>Previous</button>
-      <span>Current Page: <strong>{currentPage}</strong></span>&nbsp;|&nbsp;
-      <button onClick={() => ChangePage(1)} disabled={currentPage >= Math.ceil(totalSize/defaultPageSize)}>Next</button>
+      <button onClick={() => ChangePage(-1)} disabled={currentPage <= 1}>
+        Previous
+      </button>
+      <span>
+        Current Page: <strong>{currentPage}</strong>
+      </span>
+      &nbsp;|&nbsp;
+      <button
+        onClick={() => ChangePage(1)}
+        disabled={currentPage >= Math.ceil(totalSize / defaultPageSize)}
+      >
+        Next
+      </button>
     </div>
-  )
+  );
 }
 
-function BasicTableWithPagination(){
-	return (
-		<>
-		  <h3>Basic Table with Custom Pagination Component</h3>
+function BasicTableWithPagination() {
+  return (
+    <>
+      <h3>Basic Table with Custom Pagination Component</h3>
       <Versatiletable
         data={SampleData1}
         subComponents={{
-          PaginationComponent: CustomPagination
-        }}        
-				options={{
+          PaginationComponent: CustomPagination,
+        }}
+        options={{
           pagination: {
-            defaultPageSize: 3
-          }
-				}}
+            defaultPageSize: 3,
+          },
+        }}
         columns={[
           {
-            key: "id",
-            headerRender: "ID",
-            width: "50px",
+            key: 'id',
+            headerRender: 'ID',
+            width: '50px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "first_name",
-            headerRender: "First Name",
-            width: "100px",
+            key: 'first_name',
+            headerRender: 'First Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "last_name",
-            headerRender: "Last Name",
-            width: "100px",
+            key: 'last_name',
+            headerRender: 'Last Name',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "gender",
-            headerRender: "Gender",
-            width: "100px",
+            key: 'gender',
+            headerRender: 'Gender',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "email",
-            headerRender: "Email ID",
-            width: "200px",
+            key: 'email',
+            headerRender: 'Email ID',
+            width: '200px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "phone",
-            headerRender: "Phone",
-            width: "150px",
+            key: 'phone',
+            headerRender: 'Phone',
+            width: '150px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "salary",
-            headerRender: "Salary",
-            width: "100px",
+            key: 'salary',
+            headerRender: 'Salary',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
           {
-            key: "date_of_joining",
-            headerRender: "DoJ",
-            width: "100px",
+            key: 'date_of_joining',
+            headerRender: 'DoJ',
+            width: '100px',
             headerStyle: {
-              fontWeight: "bold",
+              fontWeight: 'bold',
             },
           },
         ]}
       />
-		</>
-	)
+    </>
+  );
 }
 
 export default BasicTableWithPagination;

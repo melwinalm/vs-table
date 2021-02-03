@@ -1,8 +1,8 @@
-import React from "react";
-import ___ from "../../../utils/getter";
-import arrowLeft from "../../../assets/icons/arrow-left-circle.svg";
-import arrowRight from "../../../assets/icons/arrow-right-circle.svg";
-import "./PaginationComponent.scss";
+import React from 'react';
+import ___ from '../../../utils/getter';
+import arrowLeft from '../../../assets/icons/arrow-left-circle.svg';
+import arrowRight from '../../../assets/icons/arrow-right-circle.svg';
+import './PaginationComponent.scss';
 
 function PaginationComponent({
   defaultPageSize,
@@ -20,18 +20,18 @@ function PaginationComponent({
         <img
           className="arrow-left-icon"
           src={arrowLeft}
-          alt={___("Previous")}
-        />{" "}
-        {___("Previous")}
+          alt={___('Previous')}
+        />{' '}
+        {___('Previous')}
       </button>
       &nbsp;|&nbsp;
       <span className="vt-pagination-current-page">
-        {___("Current Page:")} <strong>{currentPage}</strong>
+        {___('Current Page:')} <strong>{currentPage}</strong>
       </span>
       &nbsp;|&nbsp;
       <span className="vt-pagination-total-pages">
-        {___("Showing items")} {___("from")}{" "}
-        {(currentPage - 1) * defaultPageSize + 1} {___("to")}{" "}
+        {___('Showing items')} {___('from')}{' '}
+        {(currentPage - 1) * defaultPageSize + 1} {___('to')}{' '}
         {Math.min(currentPage * defaultPageSize, totalSize)}
       </span>
       &nbsp;|&nbsp;
@@ -40,8 +40,8 @@ function PaginationComponent({
         onClick={() => ChangePage(1)}
         disabled={currentPage >= Math.ceil(totalSize / defaultPageSize)}
       >
-        {___("Next")}{" "}
-        <img className="arrow-right-icon" src={arrowRight} alt={___("Next")} />
+        {___('Next')}{' '}
+        <img className="arrow-right-icon" src={arrowRight} alt={___('Next')} />
       </button>
     </div>
   );
