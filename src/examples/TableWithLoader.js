@@ -1,45 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Versatiletable from "./../VersatileTable";
-import SampleData1 from "./SampleData1";
+import SampleData from "./SampleData1";
 
-function CustomPagination({
-  defaultPageSize,
-  currentPage,
-  totalSize,
-  ChangePage,
-}) {
-  return (
-    <div className="vt-pagination">
-      <button onClick={() => ChangePage(-1)} disabled={currentPage <= 1}>
-        Previous
-      </button>
-      <span>
-        Current Page: <strong>{currentPage}</strong>
-      </span>
-      &nbsp;|&nbsp;
-      <button
-        onClick={() => ChangePage(1)}
-        disabled={currentPage >= Math.ceil(totalSize / defaultPageSize)}
-      >
-        Next
-      </button>
-    </div>
-  );
-}
+function TableWithLoader() {
+  const [data, setData] = useState([]);
 
-function BasicTableWithPagination() {
+  useEffect(() => {
+    setTimeout(() => {
+      setData(SampleData);
+    }, 5000);
+  }, []);
+
   return (
     <>
-      <h3>Basic Table with Custom Pagination Component</h3>
+      <h3>Table with Loader</h3>
       <Versatiletable
-        data={SampleData1}
-        subComponents={{
-          PaginationComponent: CustomPagination,
-        }}
+        data={data}
         options={{
-          pagination: {
-            defaultPageSize: 3,
-          },
+          defaultLoader: {
+            loaderTimeout: 5000,
+          }
         }}
         columns={[
           {
@@ -112,4 +92,4 @@ function BasicTableWithPagination() {
   );
 }
 
-export default BasicTableWithPagination;
+export default TableWithLoader;

@@ -1,11 +1,11 @@
-import React from 'react';
-import Versatiletable, {Formatters} from './../VersatileTable';
-import SampleData1 from './SampleData1';
+import React from "react";
+import Versatiletable, { Formatters } from "./../VersatileTable";
+import SampleData1 from "./SampleData1";
 
-function TableWithTruncateCell(){
-	return (
-		<>
-		  <h3>Table with truncated cell</h3>
+function TableWithTruncateCell() {
+  return (
+    <>
+      <h3>Table with truncated cell</h3>
       <Versatiletable
         data={SampleData1}
         columns={[
@@ -48,7 +48,7 @@ function TableWithTruncateCell(){
             headerStyle: {
               fontWeight: "bold",
             },
-            cellRender: val => new Formatters(val).Truncate(10, '...').value
+            cellRender: (val) => new Formatters(val).Truncate(10, "...").value,
           },
           {
             key: "phone",
@@ -76,8 +76,8 @@ function TableWithTruncateCell(){
           },
         ]}
       />
-		</>
-	)
+    </>
+  );
 }
 
 export default TableWithTruncateCell;

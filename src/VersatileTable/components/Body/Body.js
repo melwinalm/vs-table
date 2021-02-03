@@ -73,12 +73,20 @@ function Body({ data = [], columns = [], options = {}, subComponents = {} }) {
           </div>
         ))}
 
-      {(!data || data.length === 0) &&
+      {(!data || data.length === 0) && (
+        <NoRecordComponent
+          data={data}
+          options={options}
+          subComponents={subComponents}
+        />
+      )}
+
+      {/* {(!data || data.length === 0) &&
         (subComponents.NoRecordComponent ? (
           <subComponents.NoRecordComponent />
         ) : (
           <NoRecordComponent />
-        ))}
+        ))} */}
     </>
   );
 }

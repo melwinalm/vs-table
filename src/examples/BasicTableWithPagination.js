@@ -1,18 +1,18 @@
-import React from 'react';
-import Versatiletable from './../VersatileTable';
-import SampleData1 from './SampleData1';
+import React from "react";
+import Versatiletable from "./../VersatileTable";
+import SampleData1 from "./SampleData1";
 
-function BasicTableWithPagination(){
-	return (
-		<>
-		  <h3>Basic Table with Pagination</h3>
+function BasicTableWithPagination() {
+  return (
+    <>
+      <h3>Basic Table with Pagination</h3>
       <Versatiletable
-				data={SampleData1}
-				options={{
+        data={SampleData1}
+        options={{
           pagination: {
-            defaultPageSize: 3
-          }
-				}}
+            defaultPageSize: 3,
+          },
+        }}
         columns={[
           {
             key: "id",
@@ -80,8 +80,8 @@ function BasicTableWithPagination(){
           },
         ]}
       />
-		</>
-	)
+    </>
+  );
 }
 
 export default BasicTableWithPagination;

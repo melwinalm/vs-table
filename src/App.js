@@ -10,6 +10,7 @@ import TableWithFormattingFunc from "./examples/TableWithFormattingFunc";
 import BasicTableWithHeaderTooltipRender from "./examples/BasicTableWithHeaderTooltipRender";
 import BasicTableWithCustomHeaderCell from "./examples/BasicTableWithCustomHeaderCell";
 import BasicTableWithCellTooltipRender from "./examples/BasicTableWithCellTooltipRender";
+import TableWithLoader from "./examples/TableWithLoader";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
       </div>
       <div>
         <BasicTableWithCellTooltipRender />
+      </div>
+      <div>
+        <TableWithLoader />
       </div>
     </>
   );

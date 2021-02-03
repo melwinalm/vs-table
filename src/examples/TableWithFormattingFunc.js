@@ -1,12 +1,12 @@
-import React from 'react';
-import Versatiletable, { Formatters } from './../VersatileTable';
+import React from "react";
+import Versatiletable, { Formatters } from "./../VersatileTable";
 
-import SampleData3 from './SampleData3';
+import SampleData3 from "./SampleData3";
 
-function BasicTable(){
-	return (
-		<>
-		  <h3>Table with Formatting Function</h3>
+function BasicTable() {
+  return (
+    <>
+      <h3>Table with Formatting Function</h3>
       <Versatiletable
         data={SampleData3}
         columns={[
@@ -32,13 +32,13 @@ function BasicTable(){
             width: "100px",
             headerStyle: {
               fontWeight: "bold",
-						},
-						cellRender: val => new Formatters(val).Currency('₹').value
-          }
+            },
+            cellRender: (val) => new Formatters(val).Currency("₹").value,
+          },
         ]}
       />
-		</>
-	)
+    </>
+  );
 }
 
 export default BasicTable;

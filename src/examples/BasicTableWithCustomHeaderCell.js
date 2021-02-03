@@ -1,8 +1,13 @@
-import React from 'react';
-import Versatiletable from './../VersatileTable';
-import SampleData1 from './SampleData1';
+import React from "react";
+import Versatiletable from "./../VersatileTable";
+import SampleData1 from "./SampleData1";
 
-function CustomHeaderCellComponent({ headerRender, headerKey, sortField, sortOrder }) {
+function CustomHeaderCellComponent({
+  headerRender,
+  headerKey,
+  sortField,
+  sortOrder,
+}) {
   return (
     <>
       {headerRender}
@@ -13,7 +18,7 @@ function CustomHeaderCellComponent({ headerRender, headerKey, sortField, sortOrd
         </span>
       )}
     </>
-  )
+  );
 }
 
 function BasicTableWithCustomHeaderCell() {
@@ -30,7 +35,7 @@ function BasicTableWithCustomHeaderCell() {
           },
         }}
         subComponents={{
-          HeaderCellComponent: CustomHeaderCellComponent
+          HeaderCellComponent: CustomHeaderCellComponent,
         }}
         columns={[
           {
@@ -100,7 +105,7 @@ function BasicTableWithCustomHeaderCell() {
         ]}
       />
     </>
-  )
+  );
 }
 
 export default BasicTableWithCustomHeaderCell;

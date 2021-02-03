@@ -1,11 +1,11 @@
-import React from 'react';
-import Versatiletable from './../VersatileTable';
-import SampleData1 from './SampleData1';
+import React from "react";
+import Versatiletable from "./../VersatileTable";
+import SampleData1 from "./SampleData1";
 
-function BasicTable(){
-	return (
-		<>
-		  <h3>Basic Table</h3>
+function BasicTable() {
+  return (
+    <>
+      <h3>Basic Table</h3>
       <Versatiletable
         data={SampleData1}
         columns={[
@@ -75,8 +75,8 @@ function BasicTable(){
           },
         ]}
       />
-		</>
-	)
+    </>
+  );
 }
 
 export default BasicTable;

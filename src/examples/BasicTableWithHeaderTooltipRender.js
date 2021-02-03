@@ -1,12 +1,12 @@
-import React from 'react';
-import Versatiletable from './../VersatileTable';
+import React from "react";
+import Versatiletable from "./../VersatileTable";
 
-import SampleData3 from './SampleData3';
+import SampleData3 from "./SampleData3";
 
-function BasicTableWithHeaderTooltipRender(){
-	return (
-		<>
-		  <h3>Basic Table with Header Tooltip Render</h3>
+function BasicTableWithHeaderTooltipRender() {
+  return (
+    <>
+      <h3>Basic Table with Header Tooltip Render</h3>
       <Versatiletable
         data={SampleData3}
         columns={[
@@ -45,12 +45,12 @@ function BasicTableWithHeaderTooltipRender(){
             width: "100px",
             headerStyle: {
               fontWeight: "bold",
-						},
-          }
+            },
+          },
         ]}
       />
-		</>
-	)
+    </>
+  );
 }
 
 export default BasicTableWithHeaderTooltipRender;

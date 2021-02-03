@@ -14,7 +14,7 @@ Highly customizable table library build on react.
   ```javascript
   style: {
     {
-      width: "100%"
+      width: "100%";
     }
   }
   ```
@@ -164,7 +164,7 @@ Highly customizable table library build on react.
 
   - **defaultSort** - `object`
 
-    You can define the default sorting. This can be defined using the below properties.
+    You can define the default sorting. By default sort is disabled. This can be defined using the below properties.
 
     - **sortField** - `string`
 
@@ -188,6 +188,31 @@ Highly customizable table library build on react.
 
       ```javascript
       sortOrder: "string";
+      ```
+
+  - **defaultLoader** - `object or boolean`
+
+    To enable the default loader. `defaultLoader` can be enabled by passing in the boolean value (`true`) or by defining any object with the below properties. By default loader is disabled.
+
+    ```javascript
+    defaultLoader: true;
+
+    // or
+
+    defaultLoader: {
+    }
+    ```
+
+    Below are some of the properties that can be passed inside `defaultLoader`
+
+    - **loaderTimeout** - `number`
+
+      Time out (time in milli-seconds) to stop/hide loader. Default value is `3000`.
+
+      ```javascript
+      defaultLoader: {
+        loaderTimeout: 5000;
+      }
       ```
 
 - **subComponents** - `object`
@@ -221,5 +246,15 @@ Highly customizable table library build on react.
     ```javascript
     subComponents={{
       PaginationComponent: CustomPaginationComponent
+    }}
+    ```
+
+  - **LoaderComponent**
+
+    Custom Loader components.
+
+    ```javascript
+    subComponents={{
+      LoaderComponent: CustomLoaderComponent
     }}
     ```

@@ -17,7 +17,7 @@ function BasicTableWithCellTooltipRender() {
             width: "100px",
             headerStyle: {
               fontWeight: "bold",
-            }
+            },
           },
           {
             key: "last_name",
@@ -28,7 +28,7 @@ function BasicTableWithCellTooltipRender() {
               fontWeight: "bold",
             },
             cellTooltipRender: true,
-            cellTooltipPosition: "top"
+            cellTooltipPosition: "top",
           },
           {
             key: "salary",
@@ -46,7 +46,7 @@ function BasicTableWithCellTooltipRender() {
                 </div>
               );
             },
-            cellTooltipPosition: "left"
+            cellTooltipPosition: "left",
           },
         ]}
       />
