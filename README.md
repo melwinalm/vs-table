@@ -1,4 +1,4 @@
-# Versatile Table
+# vs-table (This repo is currently not being maintained.)
 
 Highly customizable table library build on react.
 
